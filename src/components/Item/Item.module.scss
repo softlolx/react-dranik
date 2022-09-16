@@ -1,8 +1,8 @@
-.header {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 24px 36px;
+.item {
+  max-width: 260px;
+  min-height: 450px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   border-bottom: 1px solid #f7f7f7;
 
@@ -12,171 +12,119 @@
     }
   }
 
-  &__logoContainer {
+  &__image {
+    border-radius: 20px;
+    height: auto;
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #000000;
+  }
+
+  &__configContainer {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 6px;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 32px;
+    row-gap: 6px;
+  }
+
+  &__configButton {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    height: 32px;
+    padding: 10px;
+    border-radius: 5px;
+
+    background-color: transparent;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #2c2c2c;
+
+    &_wide {
+      grid-column: span 3;
+    }
+
+    &_short {
+      grid-column: span 2;
+    }
+
+    &_active {
+      background-color: #fff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  &__bottomContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
-
-    @media screen and (max-width: 769px) {
-      & {
-        gap: 8px;
-      }
-    }
   }
 
-  &__logo {
-    display: block;
-    width: 42px;
-    height: 42px;
-
-    @media screen and (max-width: 769px) {
-      & {
-        width: 28px;
-        height: 28px;
-      }
-    }
-  }
-
-  &__titleContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__title {
-    margin: 0;
-    text-transform: uppercase;
-
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 29px;
-    letter-spacing: 0.01em;
-
-    color: #181818;
-
-    @media screen and (max-width: 769px) {
-      & {
-        font-size: 18px;
-        line-height: 20px;
-      }
-    }
-  }
-
-  &__subtitle {
-    margin: 0;
-
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-
-    color: #7b7b7b;
-
-    @media screen and (max-width: 769px) {
-      & {
-        font-size: 12px;
-        line-height: 14px;
-      }
-    }
-  }
-}
-
-.cartButton {
-  border: none;
-  width: 150px;
-  height: 50px;
-  background: #fe5f1e;
-  border-radius: 30px;
-  box-sizing: border-box;
-  padding: 20px 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media screen and (max-width: 769px) {
-    & {
-      width: 104px;
-      height: 36px;
-      padding: 16px 8px;
-    }
-  }
-
-  &__sum {
-    min-width: 42px;
-    display: block;
+  &__price {
     font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-
-    color: #ffffff;
-
-    box-sizing: border-box;
-    padding-right: 12px;
-
-    @media screen and (max-width: 769px) {
-      & {
-        font-size: 12px;
-        line-height: 14px;
-        padding-right: 6px;
-      }
-    }
+    font-size: 22px;
+    line-height: 27px;
   }
 
-  &__line {
-    min-height: 25px;
-    border-right: 1px solid rgba(255, 255, 255, 0.25);
-
-    @media screen and (max-width: 769px) {
-      & {
-        min-height: 16px;
-      }
-    }
-  }
-
-  &__qtyContainer {
+  &__addButton {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
+    border: 1px solid #eb5a1e;
+    border-radius: 30px;
+    background-color: transparent;
     box-sizing: border-box;
-    padding-left: 12px;
-    min-width: 42px;
-
-    @media screen and (max-width: 769px) {
-      & {
-        padding-left: 6px;
-      }
-    }
+    padding: 8px 12px;
   }
 
-  &__cartIcon {
-    width: 16px;
-    height: 16px;
-    background-image: url(../../images/cartIcon.svg);
+  &__addButtonIcon {
+    width: 12px;
+    height: 12px;
+    background-image: url(../../images/addPlus.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-
-    @media screen and (max-width: 769px) {
-      & {
-        width: 13px;
-        height: 13px;
-      }
-    }
   }
 
-  &__totalQty {
+  &__addButtonText {
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
 
-    color: #ffffff;
+    color: #eb5a1e;
+  }
 
-    @media screen and (max-width: 769px) {
-      & {
-        font-size: 12px;
-        line-height: 14px;
-      }
-    }
+  &__addButtonQty {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 50%;
+    background-color: #eb5a1e;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
   }
 }

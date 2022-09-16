@@ -42,5 +42,8 @@
 
   &__itemsContainer {
     display: grid;
+    gap: 36px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
   }
 }
