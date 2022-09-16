@@ -58,6 +58,11 @@
 
     color: #2c2c2c;
 
+    &_active {
+      background-color: #282828;
+      color: #fff;
+    }
+
     &:hover {
       cursor: pointer;
       scale: 1.1;

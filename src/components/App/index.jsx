@@ -4,16 +4,18 @@ import { Header } from "../Header";
 import { Categories } from "../Categories";
 import { Main } from "../Main";
 import { Item } from "../Item";
+import { Cart } from "../Cart";
 
 function App() {
   return (
     <div className={styles.app}>
       <section className={styles.content}>
         <Header />
-        <Categories />
+        <Cart />
+        {/* <Categories />
         <Main>
           <Item />
-        </Main>
+        </Main> */}
       </section>
     </div>
   );
