@@ -10,7 +10,9 @@
 
 .content {
   width: 95%;
-  margin: 50px auto;
+  margin: 48px auto;
+  box-sizing: border-box;
+  padding: 12px;
   // min-height: 850px;
   // max-height: 95%;
 
@@ -21,6 +23,7 @@
   @media screen and (max-width: 769px) {
     & {
       margin: 20px auto;
+      padding: 8px;
     }
   }
 }

@@ -1,26 +1,41 @@
 .header {
   width: 100%;
   box-sizing: border-box;
-  padding: 48px 40px;
+  padding: 24px 36px;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #f7f7f7;
 
   @media screen and (max-width: 769px) {
     & {
-      padding: 24px 20px;
+      padding: 16px 8px;
     }
   }
 
   &__logoContainer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 16px;
+
+    @media screen and (max-width: 769px) {
+      & {
+        gap: 8px;
+      }
+    }
   }
 
   &__logo {
     display: block;
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
+
+    @media screen and (max-width: 769px) {
+      & {
+        width: 28px;
+        height: 28px;
+      }
+    }
   }
 
   &__titleContainer {
@@ -30,5 +45,138 @@
   }
 
   &__title {
+    margin: 0;
+    text-transform: uppercase;
+
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.01em;
+
+    color: #181818;
+
+    @media screen and (max-width: 769px) {
+      & {
+        font-size: 18px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #7b7b7b;
+
+    @media screen and (max-width: 769px) {
+      & {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+}
+
+.cartButton {
+  border: none;
+  width: 150px;
+  height: 50px;
+  background: #fe5f1e;
+  border-radius: 30px;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 769px) {
+    & {
+      width: 104px;
+      height: 36px;
+      padding: 16px 8px;
+    }
+  }
+
+  &__sum {
+    min-width: 42px;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #ffffff;
+
+    box-sizing: border-box;
+    padding-right: 12px;
+
+    @media screen and (max-width: 769px) {
+      & {
+        font-size: 12px;
+        line-height: 14px;
+        padding-right: 6px;
+      }
+    }
+  }
+
+  &__line {
+    min-height: 25px;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+
+    @media screen and (max-width: 769px) {
+      & {
+        min-height: 16px;
+      }
+    }
+  }
+
+  &__qtyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    padding-left: 12px;
+    min-width: 42px;
+
+    @media screen and (max-width: 769px) {
+      & {
+        padding-left: 6px;
+      }
+    }
+  }
+
+  &__cartIcon {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/cartIcon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @media screen and (max-width: 769px) {
+      & {
+        width: 13px;
+        height: 13px;
+      }
+    }
+  }
+
+  &__totalQty {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #ffffff;
+
+    @media screen and (max-width: 769px) {
+      & {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
   }
 }
