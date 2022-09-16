@@ -1,14 +1,10 @@
 import styles from "./Item.module.scss";
 
-export function Item() {
+export function Item({ imgUrl, name }) {
   return (
     <div className={styles.item}>
-      <img
-        src="https://cdn.vkuso.ru/uploads/draniki-s-syrom-vetchinoj-i-ukropom-820.jpg"
-        alt="#"
-        className={styles.item__image}
-      />
-      <h3 className={styles.item__name}>Классические</h3>
+      <img src={imgUrl} alt="#" className={styles.item__image} />
+      <h3 className={styles.item__name}>{name}</h3>
       <div className={styles.item__configContainer}>
         <button
           className={`${styles.item__configButton} ${styles.item__configButton_wide} ${styles.item__configButton_active}`}

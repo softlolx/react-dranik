@@ -1,4 +1,5 @@
 import styles from "./App.module.scss";
+import { data } from "../../utils/fakeApi";
 
 import { Header } from "../Header";
 import { Categories } from "../Categories";
@@ -12,15 +13,17 @@ function App() {
     <div className={styles.app}>
       <section className={styles.content}>
         <Header />
-        <Cart>
+        {/* <Cart>
           <CartItem />
           <CartItem />
           <CartItem />
-        </Cart>
-        {/* <Categories />
+        </Cart> */}
+        <Categories />
         <Main>
-          <Item />
-        </Main> */}
+          {data.map((item) => {
+            return <Item key={item.id} imgUrl={item.imageUrl} name={item.title} />;
+          })}
+        </Main>
       </section>
     </div>
   );
