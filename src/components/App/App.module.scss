@@ -3,11 +3,24 @@
   min-height: 100vh;
 
   background-color: #ffdf8c;
+
+  display: flex;
+  justify-content: center;
 }
 
 .content {
   width: 95%;
-  height: 95%;
+  margin: 50px auto;
+  // min-height: 850px;
+  // max-height: 95%;
 
   background-color: #fff;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+
+  @media screen and (max-width: 769px) {
+    & {
+      margin: 20px auto;
+    }
+  }
 }
