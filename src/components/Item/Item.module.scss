@@ -78,6 +78,16 @@
     line-height: 17px;
     color: #4b4b4b;
 
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+      transition: scale 0.15s ease-in-out;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
     @media screen and (max-width: 650px) {
       & {
         height: 24px;
@@ -130,6 +140,16 @@
     background-color: transparent;
     box-sizing: border-box;
     padding: 8px 12px;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+      transition: scale 0.15s ease-in-out;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
 
     @media screen and (max-width: 650px) {
       & {

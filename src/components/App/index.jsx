@@ -13,15 +13,6 @@ function App() {
         <Categories />
         <Main>
           <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
         </Main>
       </section>
     </div>

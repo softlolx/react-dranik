@@ -58,6 +58,16 @@
 
     color: #2c2c2c;
 
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+      transition: scale 0.15s ease-in-out;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
     @media screen and (max-width: 1024px) {
       & {
         font-size: 12px;
@@ -98,6 +108,16 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+      transition: scale 0.15s ease-in-out;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 
   &__text {
@@ -126,6 +146,16 @@
     letter-spacing: 0.015em;
 
     color: #fe5f1e;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+      transition: scale 0.15s ease-in-out;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
 
     @media screen and (max-width: 1024px) {
       & {
@@ -168,5 +198,15 @@
     line-height: 17px;
 
     color: #000000;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+      transition: scale 0.15s ease-in-out;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 }
