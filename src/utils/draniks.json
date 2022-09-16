@@ -1,0 +1,102 @@
+[
+  {
+    "id": "e4ef10472d7d4a69b9c4eb560d738f66",
+    "imageUrl": "https://cdn.vkuso.ru/uploads/draniki-s-syrom-vetchinoj-i-ukropom-820.jpg",
+    "title": "Картофельная классика",
+    "types": [0, 1],
+    "sizes": ["M", "L", "XL"],
+    "price": 803,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": "c0348c2190e648faadf1e1aba5df467b",
+    "imageUrl": "https://рецептик.рус/img/kartofelnie-draniki-s-myasom-12.jpg",
+    "title": "С мясом",
+    "types": [1],
+    "sizes": ["M", "XL"],
+    "price": 245,
+    "category": 0,
+    "rating": 6
+  },
+  {
+    "id": "9ecd6a0fe2d54973acda5e90ec11162e",
+    "imageUrl": "https://i.imgur.com/YetrWL3.jpg",
+    "title": "С грибами",
+    "types": [1],
+    "sizes": ["M", "XL"],
+    "price": 295,
+    "category": 1,
+    "rating": 4
+  },
+  {
+    "id": "2329979a93de4f13a5f4351fbdbbafae",
+    "imageUrl": "http://www.t-h.ru/photomenu/public/img/1/17bce16002d4e58148dd738d9e9215ca.jpg",
+    "title": "С икрой",
+    "types": [1],
+    "sizes": ["M", "L", "XL"],
+    "price": 275,
+    "category": 2,
+    "rating": 2
+  },
+  {
+    "id": "45ae2cae69e64186beaf79c1c978c93e",
+    "imageUrl": "https://attuale.ru/wp-content/uploads/2018/11/DSC_00921.jpg",
+    "title": "С творогом",
+    "types": [0, 1],
+    "sizes": ["M", "L", "XL"],
+    "price": 415,
+    "category": 3,
+    "rating": 8
+  },
+  {
+    "id": "bbec8bfad6664633bc9445b9af6ebbfe",
+    "imageUrl": "https://i.pinimg.com/originals/7e/00/bd/7e00bdb4e3a7e840ee6eec490d75fe44.jpg",
+    "title": "Вегитарианские",
+    "types": [0],
+    "sizes": ["L", "XL"],
+    "price": 580,
+    "category": 2,
+    "rating": 2
+  },
+  {
+    "id": "ee3658f2dd5b4ab98875d222999852b1",
+    "imageUrl": "https://sovkusom.ru/wp-content/uploads/recepty/d/draniki-s-syrom/1.jpg",
+    "title": "С сыром",
+    "types": [0, 1],
+    "sizes": ["M", "L", "XL"],
+    "price": 675,
+    "category": 1,
+    "rating": 9
+  },
+  {
+    "id": "8802b75223a34463914d2ee2d799381d",
+    "imageUrl": "https://top10a.ru/wp-content/uploads/2020/03/2-87.jpg",
+    "title": "С луком",
+    "types": [0, 1],
+    "sizes": ["M", "L", "XL"],
+    "price": 450,
+    "category": 4,
+    "rating": 10
+  },
+  {
+    "id": "f9bfff2645b2419c8d441d69035e024c",
+    "imageUrl": "https://saveda.ru/wp-content/uploads/2019/08/Draniki-s-chesnokom-na-skovorode.jpg",
+    "title": "Чесночные",
+    "types": [0, 1],
+    "sizes": ["M", "L", "XL"],
+    "price": 395,
+    "category": 5,
+    "rating": 10
+  },
+  {
+    "id": "a3260a06ccc642aea53daa46e54a6830",
+    "imageUrl": "https://i.ytimg.com/vi/yvyXtomXJog/maxresdefault.jpg",
+    "title": "С сюрпризом",
+    "types": [0, 1],
+    "sizes": ["M", "L", "XL"],
+    "price": 285,
+    "category": 5,
+    "rating": 7
+  }
+]
