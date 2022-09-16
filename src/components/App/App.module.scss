@@ -9,6 +9,7 @@
 }
 
 .content {
+  max-width: 1440px;
   width: 95%;
   margin: 48px auto;
   box-sizing: border-box;
@@ -22,8 +23,8 @@
 
   @media screen and (max-width: 769px) {
     & {
-      margin: 20px auto;
-      padding: 8px;
+      margin: 12px auto;
+      padding: 0 8px;
     }
   }
 }

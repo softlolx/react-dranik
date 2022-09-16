@@ -2,6 +2,7 @@ import styles from "./App.module.scss";
 
 import { Header } from "../Header";
 import { Categories } from "../Categories";
+import { Main } from "../Main";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <section className={styles.content}>
         <Header />
         <Categories />
+        <Main></Main>
       </section>
     </div>
   );
