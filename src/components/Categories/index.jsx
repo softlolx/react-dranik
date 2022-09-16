@@ -13,7 +13,7 @@ export function Categories() {
       </ul>
       <div className={styles.sort}>
         <button className={styles.sort__directionButton}></button>
-        <span className={styles.sort__text}>Сортировка по:</span>
+        <span className={styles.sort__text}>Сортировка&nbsp;по:</span>
         <button className={styles.sort__optionButton}> популярности</button>
         <div className={styles.sort__optionContainer}>
           <ul className={styles.sort__optionList}>
