@@ -13,7 +13,7 @@ export function Header() {
       </div>
 
       <button className={styles.cartButton}>
-        <span className={styles.cartButton__sum}>&#8381;520</span>
+        <span className={styles.cartButton__sum}>520&#160;&#8381;</span>
         <div className={styles.cartButton__line}></div>
         <div className={styles.cartButton__qtyContainer}>
           <div className={styles.cartButton__cartIcon}></div>

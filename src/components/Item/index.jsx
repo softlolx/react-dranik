@@ -35,7 +35,7 @@ export function Item() {
         <button className={styles.item__addButton}>
           <div className={styles.item__addButtonIcon}></div>
           <span className={styles.item__addButtonText}>Добавить</span>
-          <span className={styles.item__addButtonQty}>2</span>
+          {/* <span className={styles.item__addButtonQty}>2</span> */}
         </button>
       </div>
     </div>

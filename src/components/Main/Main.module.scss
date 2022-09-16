@@ -12,6 +12,11 @@
       padding: 0 8px;
     }
   }
+  @media screen and (max-width: 400px) {
+    & {
+      padding: 0 2px;
+    }
+  }
 
   &__title {
     margin: 0 0 32px 0;
@@ -41,9 +46,20 @@
   }
 
   &__itemsContainer {
+    width: 100%;
     display: grid;
     gap: 36px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, 260px);
+    justify-items: center;
+
+    justify-content: space-around;
+
+    @media screen and (max-width: 650px) {
+      & {
+        grid-template-columns: repeat(auto-fit, 160px);
+        gap: 4px;
+        row-gap: 20px;
+      }
+    }
   }
 }
