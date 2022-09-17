@@ -143,6 +143,10 @@
     box-sizing: border-box;
     padding: 8px 12px;
 
+    &_active {
+      background-color: #eb5a1e;
+    }
+
     &:hover {
       cursor: pointer;
       scale: 1.1;
@@ -185,6 +189,10 @@
     line-height: 19px;
 
     color: #eb5a1e;
+
+    &_active {
+      color: #fff;
+    }
 
     @media screen and (max-width: 650px) {
       & {

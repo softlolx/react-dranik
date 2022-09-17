@@ -1,6 +1,13 @@
+import { useState } from "react";
 import styles from "./Item.module.scss";
 
 export function Item({ imgUrl, name }) {
+  const [addCount, setAddCount] = useState(0);
+
+  function handleAddButtonCLick() {
+    setAddCount((prev) => prev + 1);
+  }
+
   return (
     <div className={styles.item}>
       <img src={imgUrl} alt="#" className={styles.item__image} />
@@ -28,10 +35,19 @@ export function Item({ imgUrl, name }) {
       </div>
       <div className={styles.item__bottomContainer}>
         <span className={styles.item__price}>от 395 &#8381;</span>
-        <button className={styles.item__addButton}>
+        <button
+          className={`${styles.item__addButton} ${addCount > 0 && styles.item__addButton_active}`}
+          onClick={handleAddButtonCLick}
+        >
           <div className={styles.item__addButtonIcon}></div>
-          <span className={styles.item__addButtonText}>Добавить</span>
-          {/* <span className={styles.item__addButtonQty}>2</span> */}
+          <span
+            className={`${styles.item__addButtonText} ${
+              addCount > 0 && styles.item__addButtonText_active
+            }`}
+          >
+            Добавить
+          </span>
+          {addCount > 0 && <span className={styles.item__addButtonQty}>{addCount}</span>}
         </button>
       </div>
     </div>
