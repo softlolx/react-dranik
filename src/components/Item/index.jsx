@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Item.module.scss";
 
-export function Item({ imgUrl, name }) {
+export function Item({ imgUrl, name, price }) {
   const [addCount, setAddCount] = useState(0);
 
   function handleAddButtonCLick() {
@@ -34,7 +34,7 @@ export function Item({ imgUrl, name }) {
         </button>
       </div>
       <div className={styles.item__bottomContainer}>
-        <span className={styles.item__price}>от&#160;395&#8381;</span>
+        <span className={styles.item__price}>от&#160;{price}&#8381;</span>
         <button
           className={`${styles.item__addButton} ${addCount > 0 && styles.item__addButton_active}`}
           onClick={handleAddButtonCLick}

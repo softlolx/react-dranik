@@ -13,15 +13,27 @@ function App() {
     <div className={styles.app}>
       <section className={styles.content}>
         <Header />
+        <Categories />
         {/* <Cart>
           <CartItem />
           <CartItem />
           <CartItem />
         </Cart> */}
-        <Categories />
         <Main>
           {data.map((item) => {
-            return <Item key={item.id} imgUrl={item.imageUrl} name={item.title} />;
+            return (
+              <Item
+                key={item.id}
+                id={item.id}
+                imgUrl={item.imageUrl}
+                name={item.title}
+                price={item.price}
+                types={item.types}
+                sizes={item.sizes}
+                category={item.category}
+                rating={item.rating}
+              />
+            );
           })}
         </Main>
       </section>
