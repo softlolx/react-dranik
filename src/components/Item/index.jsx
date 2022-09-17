@@ -34,7 +34,7 @@ export function Item({ imgUrl, name }) {
         </button>
       </div>
       <div className={styles.item__bottomContainer}>
-        <span className={styles.item__price}>от 395 &#8381;</span>
+        <span className={styles.item__price}>от&#160;395&#8381;</span>
         <button
           className={`${styles.item__addButton} ${addCount > 0 && styles.item__addButton_active}`}
           onClick={handleAddButtonCLick}
