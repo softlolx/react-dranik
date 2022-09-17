@@ -3,11 +3,20 @@ import styles from "./Item.module.scss";
 
 export function Item({ imgUrl, name, price, types, sizes, category, rating }) {
   const [addCount, setAddCount] = useState(0);
+  const [selectedType, setSelectedType] = useState();
+  const [selectedSize, setSelectedSize] = useState();
 
-  const specs = ["диетические", "со\u00A0сметаной"];
+  const itemTypes = ["диетические", "со\u00A0сметаной"];
 
   function handleAddButtonCLick() {
     setAddCount((prev) => prev + 1);
+  }
+
+  function handleTypeClick(evt) {
+    setSelectedType(evt.target.id);
+  }
+  function handleSizeClick(evt) {
+    setSelectedSize(evt.target.id);
   }
 
   return (
@@ -16,14 +25,32 @@ export function Item({ imgUrl, name, price, types, sizes, category, rating }) {
       <h3 className={styles.item__name}>{name}</h3>
       <div className={styles.item__configContainer}>
         <div className={styles.item__specificButtons}>
-          {types.map((item) => {
-            return <button className={styles.item__specificButton}>{specs[item]}</button>;
+          {types.map((item, index) => {
+            return (
+              <button
+                key={index}
+                id={item}
+                className={`${styles.item__specificButton} ${
+                  selectedType == item ? styles.item__specificButton_active : ""
+                }`}
+                onClick={handleTypeClick}
+              >
+                {itemTypes[item]}
+              </button>
+            );
           })}
         </div>
         <div className={styles.item__sizes}>
           {sizes.map((item, index) => {
             return (
-              <button className={styles.item__sizeButton} key={index}>
+              <button
+                key={index}
+                id={item}
+                className={`${styles.item__sizeButton} ${
+                  selectedSize == item ? styles.item__sizeButton_active : ""
+                }`}
+                onClick={handleSizeClick}
+              >
                 {item}
               </button>
             );
