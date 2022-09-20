@@ -1,5 +1,5 @@
 .item {
-  max-width: 220px;
+  width: 220px;
   box-sizing: border-box;
   padding: 6px;
   padding-bottom: 10px;
@@ -14,7 +14,7 @@
 
   @media screen and (max-width: 1023px) {
     & {
-      max-width: 160px;
+      width: 160px;
       gap: 12px;
     }
   }
@@ -55,7 +55,7 @@
     align-items: center;
     gap: 6px;
 
-    @media screen and (max-width: 1023px) {
+    @media screen and (max-width: 1024px) {
       & {
         gap: 6px;
         padding: 4px;
@@ -97,6 +97,7 @@
 
     &:active {
       transform: scale(0.9);
+      transition: scale 0.15s ease-in-out;
     }
 
     @media screen and (max-width: 1023px) {
@@ -171,9 +172,9 @@
   }
 
   &__price {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
 
     @media screen and (max-width: 1023px) {
       & {
@@ -184,15 +185,16 @@
   }
 
   &__addButton {
+    max-width: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     border: 1px solid #eb5a1e;
-    border-radius: 30px;
+    border-radius: 24px;
     background-color: transparent;
     box-sizing: border-box;
-    padding: 8px 12px;
+    padding: 8px 8px;
 
     &_active {
       background-color: #eb5a1e;
@@ -236,8 +238,8 @@
 
   &__addButtonText {
     font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 14px;
+    line-height: 16px;
 
     color: #eb5a1e;
 
@@ -254,17 +256,17 @@
   }
 
   &__addButtonQty {
-    width: 22px;
-    height: 22px;
+    width: 14px;
+    height: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px;
-    border-radius: 50%;
-    background-color: #eb5a1e;
+    // padding: 2px;
+    // border-radius: 50%;
+    // background-color: #eb5a1e;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 12px;
+    line-height: 12px;
     color: #fff;
 
     @media screen and (max-width: 1023px) {
