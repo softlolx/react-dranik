@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./SortPopup.module.scss";
 
 export function SortPopup({ onOptionSelect }) {
@@ -16,7 +15,7 @@ export function SortPopup({ onOptionSelect }) {
   return (
     <div className={styles.sort__optionContainer}>
       <ul className={styles.sort__optionList}>
-        {optionsList.map((item, index) => {
+        {optionsList.map((item) => {
           return (
             <li
               key={item.value}

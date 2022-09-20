@@ -115,6 +115,10 @@
     background-repeat: no-repeat;
     background-size: contain;
 
+    &_updown {
+      transform: rotate(180deg);
+    }
+
     &:hover {
       cursor: pointer;
       scale: 1.1;

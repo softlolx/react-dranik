@@ -6,6 +6,8 @@ export function Categories({
   selectedSortOptionText,
   onCategorySelect,
   activeCategory,
+  onChangeSortOrder,
+  sortOrder,
 }) {
   const categories = ["Все", "Мясные", "Веганские", "Грибные", "Рыбные", "Острые"];
 
@@ -32,7 +34,12 @@ export function Categories({
         })}
       </ul>
       <div className={styles.sort}>
-        <button className={styles.sort__directionButton}></button>
+        <button
+          className={`${styles.sort__directionButton} ${
+            !sortOrder ? "" : styles.sort__directionButton_updown
+          }`}
+          onClick={onChangeSortOrder}
+        ></button>
         <span className={styles.sort__text}>Сортировка&nbsp;по:</span>
         <button className={styles.sort__optionButton} onClick={onSortPopupClick}>
           {selectedSortOptionText}
