@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Categories.module.scss";
 
-export function Categories({ children, onSortPopupClick }) {
+export function Categories({ children, onSortPopupClick, selectedSortOption }) {
   const [active, setActive] = useState(0);
 
   const categories = ["Все", "Мясные", "Веганские", "Грибные", "Рыбные", "Острые"];
@@ -30,8 +30,7 @@ export function Categories({ children, onSortPopupClick }) {
         <button className={styles.sort__directionButton}></button>
         <span className={styles.sort__text}>Сортировка&nbsp;по:</span>
         <button className={styles.sort__optionButton} onClick={onSortPopupClick}>
-          {" "}
-          популярности
+          {selectedSortOption}
         </button>
         {children}
       </div>

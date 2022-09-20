@@ -12,6 +12,12 @@ import { SortPopup } from "../SortPopup/SortPopup";
 
 function App() {
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
+  const [selectedSortOption, setSelectedSortOption] = useState("популярности");
+
+  function handleSelectSortOption(text) {
+    setSelectedSortOption(text);
+    setIsSortPopupOpened((prev) => !prev);
+  }
 
   function handleSortPopupClick() {
     setIsSortPopupOpened((prev) => !prev);
@@ -21,8 +27,8 @@ function App() {
     <div className={styles.app}>
       <section className={styles.content}>
         <Header />
-        <Categories onSortPopupClick={handleSortPopupClick}>
-          {isSortPopupOpened && <SortPopup />}
+        <Categories onSortPopupClick={handleSortPopupClick} selectedSortOption={selectedSortOption}>
+          {isSortPopupOpened && <SortPopup onOptionSelect={handleSelectSortOption} />}
         </Categories>
         {/* <Cart>
           <CartItem />

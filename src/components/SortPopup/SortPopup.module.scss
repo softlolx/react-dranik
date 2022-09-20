@@ -28,7 +28,16 @@
   font-size: 14px;
   line-height: 17px;
 
+  box-sizing: border-box;
+  padding: 2px;
+  border-radius: 5px;
+
   color: #000000;
+
+  &_active {
+    background-color: #fe5f1e;
+    color: aliceblue;
+  }
 
   &:hover {
     cursor: pointer;
