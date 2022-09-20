@@ -1,4 +1,5 @@
 import styles from "./Categories.module.scss";
+import { SearchBar } from "../SearchBar";
 
 export function Categories({
   children,
@@ -33,6 +34,7 @@ export function Categories({
           );
         })}
       </ul>
+      <SearchBar />
       <div className={styles.sort}>
         <button
           className={`${styles.sort__directionButton} ${

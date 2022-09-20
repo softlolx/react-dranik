@@ -13,6 +13,7 @@ const BASE_URL = "https://6323b8a1bb2321cba91e1779.mockapi.io";
 export function HomePage() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchBarValue, setSearchBarValue] = useState("");
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
   const [currentSort, setCurrentSort] = useState("rating");
@@ -44,6 +45,22 @@ export function HomePage() {
     })();
   }, [selectedCategory, sortOrder, currentSort]);
 
+  const draniks = items?.map((item) => {
+    return (
+      <Item
+        key={item.id}
+        id={item.id}
+        imgUrl={item.imageUrl}
+        name={item.title}
+        price={item.price}
+        types={item.types}
+        sizes={item.sizes}
+        category={item.category}
+        rating={item.rating}
+      />
+    );
+  });
+
   function handleSelectSortOption(text, value) {
     setSelectedSortOptionText(text);
     setCurrentSort(value);
@@ -62,6 +79,10 @@ export function HomePage() {
     setSortOrder((prev) => !prev);
   }
 
+  function handleSearchBarChange(e) {
+    setSearchBarValue(e.target.value);
+  }
+
   return (
     <CurrentSortContext.Provider value={currentSort}>
       <Categories
@@ -71,27 +92,13 @@ export function HomePage() {
         activeCategory={selectedCategory}
         onChangeSortOrder={handleSortOrderChange}
         sortOrder={sortOrder}
+        onSearchBarChange={handleSearchBarChange}
+        searchBarValue={searchBarValue}
       >
         {isSortPopupOpened && <SortPopup onOptionSelect={handleSelectSortOption} />}
       </Categories>
       <Main>
-        {isLoading
-          ? [...new Array(10)].map((_, i) => <ItemSceleton key={i} />)
-          : items?.map((item) => {
-              return (
-                <Item
-                  key={item.id}
-                  id={item.id}
-                  imgUrl={item.imageUrl}
-                  name={item.title}
-                  price={item.price}
-                  types={item.types}
-                  sizes={item.sizes}
-                  category={item.category}
-                  rating={item.rating}
-                />
-              );
-            })}
+        {isLoading ? [...new Array(10)].map((_, i) => <ItemSceleton key={i} />) : draniks}
       </Main>
     </CurrentSortContext.Provider>
   );

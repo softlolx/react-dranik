@@ -4,6 +4,7 @@
   padding: 24px 36px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   gap: 16px;
 
@@ -16,12 +17,12 @@
   @media screen and (max-width: 769px) {
     & {
       padding: 10px 8px;
+      flex-wrap: wrap;
     }
   }
 
   @media screen and (max-width: 550px) {
     & {
-      flex-wrap: wrap;
       justify-content: flex-end;
     }
   }
