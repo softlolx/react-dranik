@@ -25,9 +25,9 @@ export function HomePage() {
     (function getItems() {
       setIsLoading(true);
       fetch(
-        `${BASE_URL}/items?sortBy=${currentSort}&order=${sortOrder ? "desc" : "asc"}${
-          selectedCategory > 0 ? "&category=" + `${selectedCategory}` : ""
-        }`
+        `${BASE_URL}/items?sortBy=${currentSort}&order=${sortOrder ? "desc" : "asc"}
+        ${selectedCategory > 0 ? "&category=" + `${selectedCategory}` : ""}
+        ${searchBarValue.length > 0 ? "&search=" + `${searchBarValue}` : ""}`
       )
         .then((res) => {
           if (!res.ok) {
@@ -43,7 +43,7 @@ export function HomePage() {
         })
         .catch((error) => console.log(error));
     })();
-  }, [selectedCategory, sortOrder, currentSort]);
+  }, [selectedCategory, sortOrder, currentSort, searchBarValue]);
 
   const draniks = items?.map((item) => {
     return (

@@ -5,7 +5,7 @@ export function SearchBar({ searchBarValue, onSearchBarChange }) {
     <input
       className={styles.search__input}
       placeholder="Поиск..."
-      onChange={onSearchBarChange}
+      onChange={(e) => onSearchBarChange(e)}
       value={searchBarValue}
     ></input>
   );

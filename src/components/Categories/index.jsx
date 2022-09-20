@@ -9,6 +9,7 @@ export function Categories({
   activeCategory,
   onChangeSortOrder,
   sortOrder,
+  onSearchBarChange,
 }) {
   const categories = ["Все", "Мясные", "Веганские", "Грибные", "Рыбные", "Острые"];
 
@@ -34,7 +35,7 @@ export function Categories({
           );
         })}
       </ul>
-      <SearchBar />
+      <SearchBar onSearchBarChange={onSearchBarChange} />
       <div className={styles.sort}>
         <button
           className={`${styles.sort__directionButton} ${
