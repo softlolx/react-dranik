@@ -3,12 +3,17 @@ import styles from "./SortPopup.module.scss";
 
 export function SortPopup({ onOptionSelect }) {
   const [selectedOption, setSelectedOption] = useState();
-  const optionsList = ["популярности", "цене", "алфавиту"];
+  const optionsList = [
+    { name: "популярности", value: "rating" },
+    { name: "цене", value: "price" },
+    { name: "алфавиту", value: "title" },
+  ];
 
   function handleOptionClick(evt) {
     setSelectedOption(evt.target.id);
 
-    onOptionSelect(evt.target.innerText);
+    onOptionSelect(evt.target.innerText, evt.target.id);
+    console.log(evt);
   }
 
   return (
@@ -17,14 +22,14 @@ export function SortPopup({ onOptionSelect }) {
         {optionsList.map((item, index) => {
           return (
             <li
-              key={index}
-              id={index}
+              key={item.value}
+              id={item.value}
               className={`${styles.sort__optionItem} ${
                 selectedOption == index ? styles.sort__optionItem_active : ""
               }`}
               onClick={handleOptionClick}
             >
-              {item}
+              {item.name}
             </li>
           );
         })}

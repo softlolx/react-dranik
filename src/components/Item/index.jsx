@@ -3,8 +3,8 @@ import styles from "./Item.module.scss";
 
 export function Item({ imgUrl, name, price, types, sizes, category, rating }) {
   const [addCount, setAddCount] = useState(0);
-  const [selectedType, setSelectedType] = useState();
-  const [selectedSize, setSelectedSize] = useState();
+  const [selectedType, setSelectedType] = useState("0");
+  const [selectedSize, setSelectedSize] = useState("M");
 
   const itemTypes = ["диетические", "со\u00A0сметаной"];
 
@@ -15,6 +15,7 @@ export function Item({ imgUrl, name, price, types, sizes, category, rating }) {
   function handleTypeClick(evt) {
     setSelectedType(evt.target.id);
   }
+
   function handleSizeClick(evt) {
     setSelectedSize(evt.target.id);
   }

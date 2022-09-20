@@ -6,11 +6,15 @@ import { Item } from "../components/Item";
 import { SortPopup } from "../components/SortPopup/SortPopup";
 import ItemSceleton from "../components/Item/ItemSceleton";
 
+import { CurrentSortContext } from "../contexts/CurrentSortContext";
+
 const BASE_URL = "https://6323b8a1bb2321cba91e1779.mockapi.io";
 
 export function HomePage() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [currentSort, setCurrentSort] = useState("rating");
 
   useEffect(() => {
     (function getItems() {
@@ -34,8 +38,9 @@ export function HomePage() {
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState("популярности");
 
-  function handleSelectSortOption(text) {
+  function handleSelectSortOption(text, value) {
     setSelectedSortOption(text);
+    setCurrentSort(value);
     setIsSortPopupOpened((prev) => !prev);
   }
 
@@ -44,7 +49,7 @@ export function HomePage() {
   }
 
   return (
-    <>
+    <CurrentSortContext.Provider value={currentSort}>
       <Categories onSortPopupClick={handleSortPopupClick} selectedSortOption={selectedSortOption}>
         {isSortPopupOpened && <SortPopup onOptionSelect={handleSelectSortOption} />}
       </Categories>
@@ -67,6 +72,6 @@ export function HomePage() {
               );
             })}
       </Main>
-    </>
+    </CurrentSortContext.Provider>
   );
 }
