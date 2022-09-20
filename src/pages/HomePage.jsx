@@ -8,7 +8,7 @@ import ItemSceleton from "../components/Item/ItemSceleton";
 
 const BASE_URL = "https://6323b8a1bb2321cba91e1779.mockapi.io";
 
-export function Home() {
+export function HomePage() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 

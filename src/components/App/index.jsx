@@ -12,9 +12,9 @@ import { Header } from "../Header";
 // import { CartItem } from "../CartItem";
 // import { SortPopup } from "../SortPopup/SortPopup";
 
-import { Home } from "../../pages/Home";
+import { HomePage } from "../../pages/HomePage";
 import { CartPage } from "../../pages/CartPage";
-import { NotFound } from "../../pages/NotFound";
+import { NotFoundPage } from "../../pages/NotFoundPage";
 
 function App() {
   return (
@@ -23,9 +23,9 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
           <Route path="cart" element={<CartPage />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
+          <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
       </section>
     </div>
