@@ -14,7 +14,11 @@ export function HomePage() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
   const [currentSort, setCurrentSort] = useState("rating");
+  const [selectedSortOptionText, setSelectedSortOptionText] = useState("популярности");
+
+  const [selectedCategory, setSelectedCategory] = useState(0);
 
   useEffect(() => {
     (function getItems() {
@@ -35,11 +39,8 @@ export function HomePage() {
     })();
   }, []);
 
-  const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
-  const [selectedSortOption, setSelectedSortOption] = useState("популярности");
-
   function handleSelectSortOption(text, value) {
-    setSelectedSortOption(text);
+    setSelectedSortOptionText(text);
     setCurrentSort(value);
     setIsSortPopupOpened((prev) => !prev);
   }
@@ -48,9 +49,18 @@ export function HomePage() {
     setIsSortPopupOpened((prev) => !prev);
   }
 
+  function handleCategorySelect(id) {
+    setSelectedCategory(id);
+  }
+
   return (
     <CurrentSortContext.Provider value={currentSort}>
-      <Categories onSortPopupClick={handleSortPopupClick} selectedSortOption={selectedSortOption}>
+      <Categories
+        onSortPopupClick={handleSortPopupClick}
+        onCategorySelect={handleCategorySelect}
+        selectedSortOptionText={selectedSortOptionText}
+        activeCategory={selectedCategory}
+      >
         {isSortPopupOpened && <SortPopup onOptionSelect={handleSelectSortOption} />}
       </Categories>
       <Main>

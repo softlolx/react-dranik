@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "./SortPopup.module.scss";
 
 export function SortPopup({ onOptionSelect }) {
-  const [selectedOption, setSelectedOption] = useState();
   const optionsList = [
     { name: "популярности", value: "rating" },
     { name: "цене", value: "price" },
@@ -10,8 +9,6 @@ export function SortPopup({ onOptionSelect }) {
   ];
 
   function handleOptionClick(evt) {
-    setSelectedOption(evt.target.id);
-
     onOptionSelect(evt.target.innerText, evt.target.id);
     console.log(evt);
   }
@@ -24,9 +21,7 @@ export function SortPopup({ onOptionSelect }) {
             <li
               key={item.value}
               id={item.value}
-              className={`${styles.sort__optionItem} ${
-                selectedOption == index ? styles.sort__optionItem_active : ""
-              }`}
+              className={`${styles.sort__optionItem}`}
               onClick={handleOptionClick}
             >
               {item.name}
