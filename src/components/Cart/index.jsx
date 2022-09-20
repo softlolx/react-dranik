@@ -1,4 +1,5 @@
 import styles from "./Cart.module.scss";
+import { Link } from "react-router-dom";
 
 export function Cart({ children }) {
   return (
@@ -17,7 +18,9 @@ export function Cart({ children }) {
           <span className={styles.cart__totalSum}>Сумма заказа: 900 р</span>
         </div>
         <div className={styles.cart__buttonContainer}>
-          <button className={styles.cart__backButton}>Назад к меню</button>
+          <Link to={"/"}>
+            <button className={styles.cart__backButton}>Назад к меню</button>
+          </Link>
           <button className={styles.cart__checkoutButton}>Оплатить заказ</button>
         </div>
       </div>
