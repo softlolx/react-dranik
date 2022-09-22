@@ -4,7 +4,9 @@ import { Categories } from "../components/Categories";
 import { Main } from "../components/Main";
 import { Item } from "../components/Item";
 import { SortPopup } from "../components/SortPopup";
+
 import ItemSceleton from "../components/Item/ItemSceleton";
+import { Pagination } from "../components/Pagination";
 
 import { CurrentSortContext } from "../contexts/CurrentSortContext";
 
@@ -100,6 +102,7 @@ export function HomePage() {
       <Main>
         {isLoading ? [...new Array(10)].map((_, i) => <ItemSceleton key={i} />) : draniks}
       </Main>
+      <Pagination />
     </CurrentSortContext.Provider>
   );
 }
