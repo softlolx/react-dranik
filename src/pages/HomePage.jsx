@@ -23,11 +23,16 @@ export function HomePage() {
   const [sortOrder, setSortOrder] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(0);
 
+  const [pageLimit, setPageLimit] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     (function getItems() {
       setIsLoading(true);
       fetch(
-        `${BASE_URL}/items?sortBy=${currentSort}&order=${sortOrder ? "desc" : "asc"}
+        `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${currentSort}&order=${
+          sortOrder ? "desc" : "asc"
+        }
         ${selectedCategory > 0 ? "&category=" + `${selectedCategory}` : ""}
         ${searchBarValue.length > 0 ? "&search=" + `${searchBarValue}` : ""}`
       )
@@ -45,7 +50,7 @@ export function HomePage() {
         })
         .catch((error) => console.log(error));
     })();
-  }, [selectedCategory, sortOrder, currentSort, searchBarValue]);
+  }, [selectedCategory, sortOrder, currentSort, searchBarValue, currentPage]);
 
   const draniks = items?.map((item) => {
     return (
@@ -85,6 +90,9 @@ export function HomePage() {
     setSearchBarValue(e.target.value);
   }
 
+  function handlePageChange(page) {
+    setCurrentPage(page);
+  }
   return (
     <CurrentSortContext.Provider value={currentSort}>
       <Categories
@@ -102,7 +110,7 @@ export function HomePage() {
       <Main>
         {isLoading ? [...new Array(10)].map((_, i) => <ItemSceleton key={i} />) : draniks}
       </Main>
-      <Pagination />
+      <Pagination onPageChange={handlePageChange} />
     </CurrentSortContext.Provider>
   );
 }
