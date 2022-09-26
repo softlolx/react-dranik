@@ -37,6 +37,10 @@
     justify-content: center;
     align-items: center;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &:active {
       background-color: rgb(255, 213, 0);
     }
