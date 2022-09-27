@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { Categories } from "../components/Categories";
 import { Main } from "../components/Main";
@@ -7,15 +7,15 @@ import { SortPopup } from "../components/SortPopup";
 
 import ItemSceleton from "../components/Item/ItemSceleton";
 import { Pagination } from "../components/Pagination";
-
-import { CurrentSortContext } from "../contexts/CurrentSortContext";
+import { SearchContext } from "../contexts/SearchContext";
 
 const BASE_URL = "https://6323b8a1bb2321cba91e1779.mockapi.io";
 
 export function HomePage() {
+  const { searchBarValue, setSearchBarValue } = useContext(SearchContext);
+
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchBarValue, setSearchBarValue] = useState("");
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
   const [currentSort, setCurrentSort] = useState("rating");
@@ -38,7 +38,6 @@ export function HomePage() {
       )
         .then((res) => {
           if (!res.ok) {
-            console.log(res.status);
             return;
           } else {
             return res.json();
@@ -94,7 +93,7 @@ export function HomePage() {
     setCurrentPage(page);
   }
   return (
-    <CurrentSortContext.Provider value={currentSort}>
+    <>
       <Categories
         onSortPopupClick={handleSortPopupClick}
         onCategorySelect={handleCategorySelect}
@@ -111,6 +110,6 @@ export function HomePage() {
         {isLoading ? [...new Array(10)].map((_, i) => <ItemSceleton key={i} />) : draniks}
       </Main>
       <Pagination onPageChange={handlePageChange} />
-    </CurrentSortContext.Provider>
+    </>
   );
 }
