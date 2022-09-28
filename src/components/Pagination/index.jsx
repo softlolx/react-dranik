@@ -8,7 +8,7 @@ export function Pagination({ onPageChange }) {
         className={styles.paginate}
         breakLabel="..."
         nextLabel=">"
-        onPageChange={(e) => onPageChange(e.selected + 1)}
+        onPageChange={(evt) => onPageChange(evt.selected + 1)}
         pageRangeDisplayed={4}
         pageCount={3}
         previousLabel="<"

@@ -79,6 +79,7 @@ export function HomePage() {
 
   function handleCategorySelect(id) {
     setSelectedCategory(id);
+    setCurrentPage(1);
   }
 
   function handleSortOrderChange() {
