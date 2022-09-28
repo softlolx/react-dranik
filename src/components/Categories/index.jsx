@@ -5,11 +5,8 @@ import { useSelector } from "react-redux";
 export function Categories({
   children,
   onSortPopupClick,
-  selectedSortOptionText,
   onCategorySelect,
-  // selectedCategory,
   onChangeSortOrder,
-  sortOrder,
   onSearchBarChange,
 }) {
   const categories = ["Все", "Мясные", "Веганские", "Грибные", "Рыбные", "Острые"];
@@ -19,6 +16,8 @@ export function Categories({
   }
 
   const selectedCategory = useSelector((state) => state.category.value);
+  const sortOptionText = useSelector((state) => state.sort.sortOptionText);
+  const sortOrder = useSelector((state) => state.sort.sortOrder);
 
   return (
     <section className={styles.cat}>
@@ -48,7 +47,7 @@ export function Categories({
         ></button>
         <span className={styles.sort__text}>Сортировка&nbsp;по:</span>
         <button className={styles.sort__optionButton} onClick={onSortPopupClick}>
-          {selectedSortOptionText}
+          {sortOptionText}
         </button>
         {children}
       </div>

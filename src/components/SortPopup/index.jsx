@@ -9,7 +9,6 @@ export function SortPopup({ onOptionSelect }) {
 
   function handleOptionClick(evt) {
     onOptionSelect(evt.target.innerText, evt.target.id);
-    console.log(evt);
   }
 
   return (

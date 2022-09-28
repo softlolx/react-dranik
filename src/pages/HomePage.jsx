@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { setSelectedCategory } from "../redux/slices/categorySlice";
+import { setSortOption, setSortOptionText, setSortOrder } from "../redux/slices/sortSlice";
 
 import { Categories } from "../components/Categories";
 import { Main } from "../components/Main";
@@ -16,6 +17,9 @@ const BASE_URL = "https://6323b8a1bb2321cba91e1779.mockapi.io";
 
 export function HomePage() {
   const selectedCategory = useSelector((state) => state.category.value);
+  const sortOption = useSelector((state) => state.sort.sortOption);
+  const sortOptionText = useSelector((state) => state.sort.sortOptionText);
+  const sortOrder = useSelector((state) => state.sort.sortOrder);
   const dispatch = useDispatch();
 
   const { searchBarValue, setSearchBarValue } = useContext(SearchContext);
@@ -24,9 +28,6 @@ export function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
-  const [currentSort, setCurrentSort] = useState("rating");
-  const [selectedSortOptionText, setSelectedSortOptionText] = useState("популярности");
-  const [sortOrder, setSortOrder] = useState(true);
   const [pageLimit, setPageLimit] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -34,7 +35,7 @@ export function HomePage() {
     (function getItems() {
       setIsLoading(true);
       fetch(
-        `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${currentSort}&order=${
+        `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${sortOption}&order=${
           sortOrder ? "desc" : "asc"
         }
         ${selectedCategory > 0 ? "&category=" + `${selectedCategory}` : ""}
@@ -53,7 +54,7 @@ export function HomePage() {
         })
         .catch((error) => console.log(error));
     })();
-  }, [selectedCategory, sortOrder, currentSort, searchBarValue, currentPage]);
+  }, [selectedCategory, sortOrder, sortOption, searchBarValue, currentPage]);
 
   const draniks = items?.map((item) => {
     return (
@@ -72,9 +73,13 @@ export function HomePage() {
   });
 
   function handleSelectSortOption(text, value) {
-    setSelectedSortOptionText(text);
-    setCurrentSort(value);
+    dispatch(setSortOption(value));
+    dispatch(setSortOptionText(text));
     setIsSortPopupOpened((prev) => !prev);
+  }
+
+  function handleSortOrderChange() {
+    dispatch(setSortOrder());
   }
 
   function handleSortPopupClick() {
@@ -84,10 +89,6 @@ export function HomePage() {
   function handleCategorySelect(id) {
     dispatch(setSelectedCategory(id));
     setCurrentPage(1);
-  }
-
-  function handleSortOrderChange() {
-    setSortOrder((prev) => !prev);
   }
 
   function handleSearchBarChange(e) {
@@ -102,10 +103,7 @@ export function HomePage() {
       <Categories
         onSortPopupClick={handleSortPopupClick}
         onCategorySelect={handleCategorySelect}
-        selectedSortOptionText={selectedSortOptionText}
-        // activeCategory={selectedCategory}
         onChangeSortOrder={handleSortOrderChange}
-        sortOrder={sortOrder}
         onSearchBarChange={handleSearchBarChange}
         searchBarValue={searchBarValue}
       >
