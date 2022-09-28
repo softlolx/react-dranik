@@ -1,4 +1,7 @@
 import { useEffect, useState, useContext } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { setSelectedCategory } from "../redux/slices/categorySlice";
 
 import { Categories } from "../components/Categories";
 import { Main } from "../components/Main";
@@ -12,6 +15,9 @@ import { SearchContext } from "../contexts/SearchContext";
 const BASE_URL = "https://6323b8a1bb2321cba91e1779.mockapi.io";
 
 export function HomePage() {
+  const selectedCategory = useSelector((state) => state.category.value);
+  const dispatch = useDispatch();
+
   const { searchBarValue, setSearchBarValue } = useContext(SearchContext);
 
   const [items, setItems] = useState([]);
@@ -21,8 +27,6 @@ export function HomePage() {
   const [currentSort, setCurrentSort] = useState("rating");
   const [selectedSortOptionText, setSelectedSortOptionText] = useState("популярности");
   const [sortOrder, setSortOrder] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState(0);
-
   const [pageLimit, setPageLimit] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -78,7 +82,7 @@ export function HomePage() {
   }
 
   function handleCategorySelect(id) {
-    setSelectedCategory(id);
+    dispatch(setSelectedCategory(id));
     setCurrentPage(1);
   }
 
