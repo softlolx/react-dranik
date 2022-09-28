@@ -1,12 +1,13 @@
 import styles from "./Categories.module.scss";
 import { SearchBar } from "../SearchBar";
+import { useSelector } from "react-redux";
 
 export function Categories({
   children,
   onSortPopupClick,
   selectedSortOptionText,
   onCategorySelect,
-  activeCategory,
+  // selectedCategory,
   onChangeSortOrder,
   sortOrder,
   onSearchBarChange,
@@ -17,6 +18,8 @@ export function Categories({
     onCategorySelect(evt.target.id);
   }
 
+  const selectedCategory = useSelector((state) => state.category.value);
+
   return (
     <section className={styles.cat}>
       <ul className={styles.cat__list}>
@@ -26,7 +29,7 @@ export function Categories({
               key={index}
               id={index}
               className={`${styles.cat__item} ${
-                activeCategory == index ? styles.cat__item_active : ""
+                selectedCategory == index ? styles.cat__item_active : ""
               }`}
               onClick={handleCategoryClick}
             >

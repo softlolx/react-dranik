@@ -103,7 +103,7 @@ export function HomePage() {
         onSortPopupClick={handleSortPopupClick}
         onCategorySelect={handleCategorySelect}
         selectedSortOptionText={selectedSortOptionText}
-        activeCategory={selectedCategory}
+        // activeCategory={selectedCategory}
         onChangeSortOrder={handleSortOrderChange}
         sortOrder={sortOrder}
         onSearchBarChange={handleSearchBarChange}
