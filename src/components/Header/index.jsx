@@ -1,8 +1,11 @@
 import styles from "./Header.module.scss";
+import { useSelector } from "react-redux";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 
 export function Header() {
+  const { totalQty, totalPrice } = useSelector((state) => state.cart);
+
   return (
     <header className={styles.header}>
       <Link to={"/"}>
@@ -17,11 +20,11 @@ export function Header() {
 
       <Link to={"/cart"}>
         <button className={styles.cartButton}>
-          <span className={styles.cartButton__sum}>520&#160;&#8381;</span>
+          <span className={styles.cartButton__sum}>{totalPrice}&#160;&#8381;</span>
           <div className={styles.cartButton__line}></div>
           <div className={styles.cartButton__qtyContainer}>
             <div className={styles.cartButton__cartIcon}></div>
-            <span className={styles.cartButton__totalQty}>3</span>
+            <span className={styles.cartButton__totalQty}>{totalQty}</span>
           </div>
         </button>
       </Link>
