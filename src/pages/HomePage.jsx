@@ -57,10 +57,6 @@ export function HomePage() {
   }, [sortOption, selectedCategory]);
 
   useEffect(() => {
-    // if (sortOption == "rating" && selectedCategory == 0) {
-    //   console.log("render");
-    //   getItems();
-    // }
     if (window.location.search) {
       const urlParams = qs.parse(window.location.search.substring(1));
       console.log(urlParams);
@@ -110,7 +106,12 @@ export function HomePage() {
         }
         return;
       })
-      .catch((error) => console.log(error.code));
+      .catch((error) => console.log(error.code))
+      .finally(() => {
+        if (sortOption == "rating" && selectedCategory == 0) {
+          navigate(``);
+        }
+      });
   }
 
   function handleSelectSortOption(text, value) {
