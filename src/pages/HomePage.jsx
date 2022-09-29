@@ -150,7 +150,12 @@ export function HomePage() {
         onSearchBarChange={handleSearchBarChange}
         searchBarValue={searchBarValue}
       >
-        {isSortPopupOpened && <SortPopup onOptionSelect={handleSelectSortOption} />}
+        {isSortPopupOpened && (
+          <SortPopup
+            onSortPopupClick={handleSortPopupClick}
+            onOptionSelect={handleSelectSortOption}
+          />
+        )}
       </Categories>
       <Main>
         {isLoading ? [...new Array(10)].map((_, i) => <ItemSceleton key={i} />) : draniks}

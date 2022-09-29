@@ -1,4 +1,5 @@
 import styles from "./Categories.module.scss";
+
 import { SearchBar } from "../SearchBar";
 import { useSelector } from "react-redux";
 
