@@ -11,11 +11,13 @@ export const categorySlice = createSlice({
     setSelectedCategory: (state, category) => {
       state.value = category.payload;
     },
+    setCategoryFromUrl: (state, option) => {
+      state.value = +option.payload.selectedCategory;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, setSelectedCategory } =
-  categorySlice.actions;
+export const { setSelectedCategory, setCategoryFromUrl } = categorySlice.actions;
 
 export default categorySlice.reducer;

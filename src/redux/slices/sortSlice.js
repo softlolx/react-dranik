@@ -19,10 +19,16 @@ export const sortSlice = createSlice({
     setSortOrder: (state) => {
       state.sortOrder = !state.sortOrder;
     },
+    setSortOptions: (state, option) => {
+      state.sortOption = option.payload.sortOption;
+      state.sortOptionText = option.payload.sortOptionText;
+
+      console.log(option);
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSortOption, setSortOptionText, setSortOrder } = sortSlice.actions;
+export const { setSortOption, setSortOptionText, setSortOrder, setSortOptions } = sortSlice.actions;
 
 export default sortSlice.reducer;
