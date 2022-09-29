@@ -1,7 +1,12 @@
 import { useState } from "react";
 import styles from "./Item.module.scss";
+import { useSelector, useDispatch } from "react-redux";
 
-export function Item({ imgUrl, name, price, types, sizes, category, rating }) {
+import { addCartItem } from "../../redux/slices/cartSlice";
+
+export function Item({ id, imgUrl, title, price, types, sizes, category, rating }) {
+  const dispatch = useDispatch();
+
   const [addCount, setAddCount] = useState(0);
   const [selectedType, setSelectedType] = useState("0");
   const [selectedSize, setSelectedSize] = useState("M");
@@ -10,6 +15,17 @@ export function Item({ imgUrl, name, price, types, sizes, category, rating }) {
 
   function handleAddButtonCLick() {
     setAddCount((prev) => prev + 1);
+
+    const item = {
+      id,
+      title,
+      price,
+      imgUrl,
+      type: selectedType,
+      size: selectedSize,
+    };
+
+    dispatch(addCartItem(item));
   }
 
   function handleTypeClick(evt) {
@@ -23,7 +39,7 @@ export function Item({ imgUrl, name, price, types, sizes, category, rating }) {
   return (
     <div className={styles.item}>
       <img src={imgUrl} alt="#" className={styles.item__image} />
-      <h3 className={styles.item__name}>{name}</h3>
+      <h3 className={styles.item__name}>{title}</h3>
       <div className={styles.item__configContainer}>
         <div className={styles.item__specificButtons}>
           {types.map((item, index) => {

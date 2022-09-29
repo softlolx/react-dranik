@@ -12,6 +12,8 @@ export const cartSlice = createSlice({
   reducers: {
     addCartItem: (state, option) => {
       state.cartItems.push(option.payload);
+      state.totalQty++;
+      state.totalPrice += option.payload.price;
     },
     removeCartItem: (state, option) => {
       state.cartItems.filter((item) => item.id !== option.payload);
@@ -23,6 +25,6 @@ export const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelectedCategory } = cartSlice.actions;
+export const { addCartItem, removeCartItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
