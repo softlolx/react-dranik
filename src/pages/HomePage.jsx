@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import qs from "qs";
 
 import { setSelectedCategory } from "../redux/slices/categorySlice";
 import { setSortOption, setSortOptionText, setSortOrder } from "../redux/slices/sortSlice";
@@ -30,6 +31,10 @@ export function HomePage() {
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
   const [pageLimit, setPageLimit] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const queryString = qs.stringify();
+  });
 
   useEffect(() => {
     (function getItems() {
