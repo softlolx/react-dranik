@@ -19,7 +19,6 @@ const BASE_URL = "https://6323b8a1bb2321cba91e1779.mockapi.io";
 export function HomePage() {
   const selectedCategory = useSelector((state) => state.category.value);
   const sortOption = useSelector((state) => state.sort.sortOption);
-  const sortOptionText = useSelector((state) => state.sort.sortOptionText);
   const sortOrder = useSelector((state) => state.sort.sortOrder);
   const dispatch = useDispatch();
 

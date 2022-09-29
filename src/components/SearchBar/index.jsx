@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRef } from "react";
 import styles from "./SearchBar.module.scss";
+import { debounce } from "lodash";
 
 export function SearchBar({ searchBarValue, onSearchBarChange }) {
   const searchBarRef = useRef();
@@ -16,7 +17,7 @@ export function SearchBar({ searchBarValue, onSearchBarChange }) {
       ref={searchBarRef}
       className={styles.search__input}
       placeholder="Поиск..."
-      onChange={(e) => onSearchBarChange(e)}
+      onChange={debounce((e) => onSearchBarChange(e), 300)}
       value={searchBarValue}
     ></input>
   );
