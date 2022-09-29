@@ -37,12 +37,30 @@ export function HomePage() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const isSearching = useRef(false);
+  const isMounted = useRef(false);
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
   const [pageLimit, setPageLimit] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        sortOption,
+        sortOptionText,
+        selectedCategory,
+      });
+      console.log(queryString);
+      navigate(`?${queryString}`);
+    }
+    isMounted.current = true;
+  }, [sortOption, selectedCategory]);
+
+  useEffect(() => {
+    // if (sortOption == "rating" && selectedCategory == 0) {
+    //   console.log("render");
+    //   getItems();
+    // }
     if (window.location.search) {
       const urlParams = qs.parse(window.location.search.substring(1));
       console.log(urlParams);
@@ -53,17 +71,9 @@ export function HomePage() {
   }, []);
 
   useEffect(() => {
-    const queryString = qs.stringify({
-      sortOption,
-      sortOptionText,
-      selectedCategory,
-    });
-
-    navigate(`?${queryString}`);
-  }, [sortOption, selectedCategory]);
-
-  useEffect(() => {
-    !isSearching.current && getItems();
+    if (!isSearching.current) {
+      getItems();
+    }
     isSearching.current = false;
   }, [currentPage, selectedCategory, sortOrder, sortOption, searchBarValue]);
 
