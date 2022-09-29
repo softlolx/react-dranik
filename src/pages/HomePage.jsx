@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 import { setSelectedCategory } from "../redux/slices/categorySlice";
 import { setSortOption, setSortOptionText, setSortOrder } from "../redux/slices/sortSlice";
@@ -34,25 +35,22 @@ export function HomePage() {
   useEffect(() => {
     (function getItems() {
       setIsLoading(true);
-      fetch(
-        `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${sortOption}&order=${
-          sortOrder ? "desc" : "asc"
-        }
-        ${selectedCategory > 0 ? "&category=" + `${selectedCategory}` : ""}
-        ${searchBarValue.length > 0 ? "&search=" + `${searchBarValue}` : ""}`
-      )
-        .then((res) => {
-          if (!res.ok) {
-            return;
-          } else {
-            return res.json();
+      axios
+        .get(
+          `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${sortOption}&order=${
+            sortOrder ? "desc" : "asc"
           }
+      ${selectedCategory > 0 ? "&category=" + `${selectedCategory}` : ""}
+      ${searchBarValue.length > 0 ? "&search=" + `${searchBarValue}` : ""}`
+        )
+        .then((res) => {
+          if (res.statusText === "OK") {
+            setItems(res.data);
+            setIsLoading(false);
+          }
+          return;
         })
-        .then((data) => {
-          setItems(data);
-          setIsLoading(false);
-        })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error.code));
     })();
   }, [selectedCategory, sortOrder, sortOption, searchBarValue, currentPage]);
 
