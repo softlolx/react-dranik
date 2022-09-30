@@ -2,10 +2,14 @@ import styles from "./Cart.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { CartItem } from "../../components/CartItem";
+import { clearCart } from "../../redux/slices/cartSlice";
 
-export function Cart({ children }) {
+export function Cart() {
+  const dispatch = useDispatch();
   const { cartItems, totalQty, totalPrice } = useSelector((state) => state.cart);
-
+  function handleCartClear() {
+    dispatch(clearCart());
+  }
   return (
     <section className={styles.cart}>
       <div className={styles.cart__header}>
@@ -13,7 +17,9 @@ export function Cart({ children }) {
           <div className={styles.cart__logo}></div>
           <h3 className={styles.cart__title}>Корзина</h3>
         </div>
-        <button className={styles.cart__clearButton}>Очистить корзину</button>
+        <button className={styles.cart__clearButton} onClick={handleCartClear}>
+          Очистить корзину
+        </button>
       </div>
       <div className={styles.cartItemsContainer}>
         {cartItems.map((item) => {

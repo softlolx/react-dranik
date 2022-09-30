@@ -20,6 +20,8 @@ export const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.cartItems = [];
+      state.totalQty = 0;
+      state.totalPrice = 0;
     },
   },
 });
