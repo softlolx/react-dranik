@@ -59,7 +59,6 @@ export function HomePage() {
   useEffect(() => {
     if (window.location.search) {
       const urlParams = qs.parse(window.location.search.substring(1));
-      console.log(urlParams);
       dispatch(setCategoryFromUrl(urlParams));
       dispatch(setSortOptions(urlParams));
       isSearching.current = true;
@@ -67,10 +66,10 @@ export function HomePage() {
   }, []);
 
   useEffect(() => {
-    if (!isSearching.current) {
-      getItems();
-    }
-    isSearching.current = false;
+    // if (!isSearching.current) {
+    // }
+    // isSearching.current = false;
+    getItems();
   }, [currentPage, selectedCategory, sortOrder, sortOption, searchBarValue]);
 
   const draniks = items?.map((item) => {
@@ -102,15 +101,13 @@ export function HomePage() {
       .then((res) => {
         if (res.statusText === 'OK') {
           setItems(res.data);
-          // setPageCount(Math.ceil(draniks.length / pageLimit));
-          console.log(pageCount);
+
           setIsLoading(false);
         }
-        return;
       })
       .catch((error) => console.log(error.code))
       .finally(() => {
-        if (sortOption == 'rating' && selectedCategory == 0) {
+        if (sortOption === 'rating' && selectedCategory === '0') {
           navigate(``);
         }
       });
