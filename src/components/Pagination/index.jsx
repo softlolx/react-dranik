@@ -1,7 +1,7 @@
-import ReactPaginate from "react-paginate";
-import styles from "./Pagination.module.scss";
+import ReactPaginate from 'react-paginate';
+import styles from './Pagination.module.scss';
 
-export function Pagination({ onPageChange }) {
+export function Pagination({ onPageChange, pageLimit, pageCount }) {
   return (
     <>
       <ReactPaginate
@@ -9,8 +9,8 @@ export function Pagination({ onPageChange }) {
         breakLabel="..."
         nextLabel=">"
         onPageChange={(evt) => onPageChange(evt.selected + 1)}
-        pageRangeDisplayed={4}
-        pageCount={3}
+        pageRangeDisplayed={pageLimit}
+        pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}
       />

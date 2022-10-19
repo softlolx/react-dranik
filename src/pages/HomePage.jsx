@@ -1,28 +1,28 @@
-import { useEffect, useState, useContext } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import qs from "qs";
+import { useEffect, useState, useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import qs from 'qs';
 
-import { setSelectedCategory, setCategoryFromUrl } from "../redux/slices/categorySlice";
+import { setSelectedCategory, setCategoryFromUrl } from '../redux/slices/categorySlice';
 import {
   setSortOption,
   setSortOptionText,
   setSortOrder,
   setSortOptions,
-} from "../redux/slices/sortSlice";
+} from '../redux/slices/sortSlice';
 
-import { Categories } from "../components/Categories";
-import { Main } from "../components/Main";
-import { Item } from "../components/Item";
-import { SortPopup } from "../components/SortPopup";
+import { Categories } from '../components/Categories';
+import { Main } from '../components/Main';
+import { Item } from '../components/Item';
+import { SortPopup } from '../components/SortPopup';
 
-import ItemSceleton from "../components/Item/ItemSceleton";
-import { Pagination } from "../components/Pagination";
-import { SearchContext } from "../contexts/SearchContext";
-import { useRef } from "react";
+import ItemSceleton from '../components/Item/ItemSceleton';
+import { Pagination } from '../components/Pagination';
+import { SearchContext } from '../contexts/SearchContext';
+import { useRef } from 'react';
 
-const BASE_URL = "https://6323b8a1bb2321cba91e1779.mockapi.io";
+const BASE_URL = 'https://6323b8a1bb2321cba91e1779.mockapi.io';
 
 export function HomePage() {
   const selectedCategory = useSelector((state) => state.category.value);
@@ -40,7 +40,8 @@ export function HomePage() {
   const isMounted = useRef(false);
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
-  const [pageLimit, setPageLimit] = useState(4);
+  const [pageLimit, setPageLimit] = useState(8);
+  const [pageCount, setPageCount] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -50,7 +51,6 @@ export function HomePage() {
         sortOptionText,
         selectedCategory,
       });
-      console.log(queryString);
       navigate(`?${queryString}`);
     }
     isMounted.current = true;
@@ -94,21 +94,23 @@ export function HomePage() {
     axios
       .get(
         `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${sortOption}&order=${
-          sortOrder ? "desc" : "asc"
-        }${selectedCategory > 0 ? "&category=" + `${selectedCategory}` : ""}${
-          searchBarValue.length > 0 ? "&search=" + `${searchBarValue}` : ""
+          sortOrder ? 'desc' : 'asc'
+        }${selectedCategory > 0 ? '&category=' + `${selectedCategory}` : ''}${
+          searchBarValue.length > 0 ? '&search=' + `${searchBarValue}` : ''
         }`
       )
       .then((res) => {
-        if (res.statusText === "OK") {
+        if (res.statusText === 'OK') {
           setItems(res.data);
+          // setPageCount(Math.ceil(draniks.length / pageLimit));
+          console.log(pageCount);
           setIsLoading(false);
         }
         return;
       })
       .catch((error) => console.log(error.code))
       .finally(() => {
-        if (sortOption == "rating" && selectedCategory == 0) {
+        if (sortOption == 'rating' && selectedCategory == 0) {
           navigate(``);
         }
       });
@@ -160,7 +162,7 @@ export function HomePage() {
       <Main>
         {isLoading ? [...new Array(10)].map((_, i) => <ItemSceleton key={i} />) : draniks}
       </Main>
-      <Pagination onPageChange={handlePageChange} />
+      <Pagination onPageChange={handlePageChange} pageLimit={pageLimit} pageCount={pageCount} />
     </>
   );
 }
