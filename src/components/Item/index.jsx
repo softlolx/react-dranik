@@ -1,17 +1,17 @@
-import { useState } from "react";
-import styles from "./Item.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from 'react';
+import styles from './Item.module.scss';
+import { useDispatch } from 'react-redux';
 
-import { addCartItem } from "../../redux/slices/cartSlice";
+import { addCartItem } from '../../redux/slices/cartSlice';
 
 export function Item({ id, imgUrl, title, price, types, sizes, category, rating }) {
   const dispatch = useDispatch();
 
   const [addCount, setAddCount] = useState(0);
-  const [selectedType, setSelectedType] = useState("0");
-  const [selectedSize, setSelectedSize] = useState("M");
+  const [selectedType, setSelectedType] = useState('0');
+  const [selectedSize, setSelectedSize] = useState('M');
 
-  const itemTypes = ["диетические", "со\u00A0сметаной"];
+  const itemTypes = ['диетические', 'со\u00A0сметаной'];
 
   function handleAddButtonCLick() {
     setAddCount((prev) => prev + 1);
@@ -48,7 +48,7 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
                 key={index}
                 id={item}
                 className={`${styles.item__specificButton} ${
-                  selectedType == item ? styles.item__specificButton_active : ""
+                  selectedType == item ? styles.item__specificButton_active : ''
                 }`}
                 onClick={handleTypeClick}
               >
@@ -64,7 +64,7 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
                 key={index}
                 id={item}
                 className={`${styles.item__sizeButton} ${
-                  selectedSize == item ? styles.item__sizeButton_active : ""
+                  selectedSize == item ? styles.item__sizeButton_active : ''
                 }`}
                 onClick={handleSizeClick}
               >

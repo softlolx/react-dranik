@@ -1,37 +1,23 @@
-import styles from "./SortPopup.module.scss";
-import { useEffect, useRef } from "react";
+import styles from './SortPopup.module.scss';
+import { useEffect, useRef } from 'react';
 export function SortPopup({ onOptionSelect, onSortPopupClick }) {
   const optionsList = [
-    { name: "популярности", value: "rating" },
-    { name: "цене", value: "price" },
-    { name: "алфавиту", value: "title" },
+    { name: 'популярности', value: 'rating' },
+    { name: 'цене', value: 'price' },
+    { name: 'алфавиту', value: 'title' },
   ];
 
   const sortPopupRef = useRef();
 
-  // useEffect(() => {
-  //   function handleCloseByOverlay(evt) {
-  //     if (!evt.path.includes(sortPopupRef.current)) {
-  //       onSortPopupClick();
-  //     }
-  //   }
-  //   document.body.addEventListener("click", handleCloseByOverlay);
-
-  //   return () => {
-  //     document.body.removeEventListener("click", handleCloseByOverlay);
-  //   };
-  // }, []);
-
   const handleClickOutside = (e) => {
     if (!sortPopupRef.current.contains(e.target)) {
       onSortPopupClick();
-      console.log("works");
     }
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   });
 
   function handleOptionClick(evt) {
