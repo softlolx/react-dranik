@@ -1,6 +1,6 @@
-import styles from "./CartItem.module.scss";
+import styles from './CartItem.module.scss';
 
-export function CartItem({ id, title, price, imgUrl, type, size }) {
+export function CartItem({ id, title, price, imgUrl, type, size, count }) {
   return (
     <div className={styles.cartItem}>
       <div className={styles.product}>
@@ -14,7 +14,7 @@ export function CartItem({ id, title, price, imgUrl, type, size }) {
       </div>
       <div className={styles.cartItem__qtyContainer}>
         <button className={styles.cartItem__removeQtyButton}></button>
-        <span className={styles.cartItem__qty}>1</span>
+        <span className={styles.cartItem__qty}>{count}</span>
         <button className={styles.cartItem__addQtyButton}></button>
       </div>
       <span className={styles.cartItem__sum}>{price}</span>

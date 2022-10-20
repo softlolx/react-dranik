@@ -1,8 +1,8 @@
-import styles from "./Cart.module.scss";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { CartItem } from "../../components/CartItem";
-import { clearCart } from "../../redux/slices/cartSlice";
+import styles from './Cart.module.scss';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { CartItem } from '../../components/CartItem';
+import { clearCart } from '../../redux/slices/cartSlice';
 
 export function Cart() {
   const dispatch = useDispatch();
@@ -10,6 +10,7 @@ export function Cart() {
   function handleCartClear() {
     dispatch(clearCart());
   }
+
   return (
     <section className={styles.cart}>
       <div className={styles.cart__header}>
@@ -22,16 +23,17 @@ export function Cart() {
         </button>
       </div>
       <div className={styles.cartItemsContainer}>
-        {cartItems.map((item) => {
+        {cartItems.map((item, index) => {
           return (
             <CartItem
-              key={item.id}
+              key={item.id + index}
               id={item.id}
               title={item.title}
               price={item.price}
               imgUrl={item.imgUrl}
               type={item.type}
               size={item.size}
+              count={item.count}
             />
           );
         })}
@@ -42,7 +44,7 @@ export function Cart() {
           <span className={styles.cart__totalSum}>Сумма заказа: {totalPrice} р</span>
         </div>
         <div className={styles.cart__buttonContainer}>
-          <Link to={"/"}>
+          <Link to={'/'}>
             <button className={styles.cart__backButton}>Назад к меню</button>
           </Link>
           <button className={styles.cart__checkoutButton}>Оплатить заказ</button>

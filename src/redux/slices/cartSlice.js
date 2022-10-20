@@ -10,13 +10,19 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addCartItem: (state, option) => {
-      state.cartItems.push(option.payload);
+    addCartItem: (state, action) => {
+      const findDouble = state.cartItems.find((item) => item.id === action.payload.id);
+
+      if (findDouble) {
+        findDouble.count += 1;
+      } else {
+        state.cartItems.push({ ...action.payload, count: 1 });
+      }
       state.totalQty += 1;
-      state.totalPrice += option.payload.price;
+      state.totalPrice += action.payload.price;
     },
-    removeCartItem: (state, option) => {
-      state.cartItems.filter((item) => item.id !== option.payload);
+    removeCartItem: (state, action) => {
+      state.cartItems.filter((item) => item.id !== action.payload);
     },
     clearCart: (state) => {
       state.cartItems = [];

@@ -7,14 +7,14 @@ import { addCartItem } from '../../redux/slices/cartSlice';
 export function Item({ id, imgUrl, title, price, types, sizes, category, rating }) {
   const dispatch = useDispatch();
 
-  const [addCount, setAddCount] = useState(0);
+  // const [addCount, setAddCount] = useState(0);
   const [selectedType, setSelectedType] = useState('0');
   const [selectedSize, setSelectedSize] = useState('M');
 
   const itemTypes = ['диетические', 'со\u00A0сметаной'];
 
   function handleAddButtonCLick() {
-    setAddCount((prev) => prev + 1);
+    // setAddCount((prev) => prev + 1);
 
     const item = {
       id,
@@ -48,7 +48,7 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
                 key={index}
                 id={item}
                 className={`${styles.item__specificButton} ${
-                  selectedType == item ? styles.item__specificButton_active : ''
+                  selectedType === item.toString() ? styles.item__specificButton_active : ''
                 }`}
                 onClick={handleTypeClick}
               >
@@ -64,7 +64,7 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
                 key={index}
                 id={item}
                 className={`${styles.item__sizeButton} ${
-                  selectedSize == item ? styles.item__sizeButton_active : ''
+                  selectedSize === item ? styles.item__sizeButton_active : ''
                 }`}
                 onClick={handleSizeClick}
               >
@@ -76,19 +76,10 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
       </div>
       <div className={styles.item__bottomContainer}>
         <span className={styles.item__price}>от&#160;{price}&#8381;</span>
-        <button
-          className={`${styles.item__addButton} ${addCount > 0 && styles.item__addButton_active}`}
-          onClick={handleAddButtonCLick}
-        >
+        <button className={`${styles.item__addButton} `} onClick={handleAddButtonCLick}>
           <div className={styles.item__addButtonIcon}></div>
-          <span
-            className={`${styles.item__addButtonText} ${
-              addCount > 0 && styles.item__addButtonText_active
-            }`}
-          >
-            Добавить
-          </span>
-          {addCount > 0 && <span className={styles.item__addButtonQty}>{addCount}</span>}
+          <span className={`${styles.item__addButtonText} `}>Добавить</span>
+          {/* {addCount > 0 && <span className={styles.item__addButtonQty}>{addCount}</span>} */}
         </button>
       </div>
     </div>
