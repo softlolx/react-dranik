@@ -40,7 +40,7 @@ export function HomePage() {
   const isMounted = useRef(false);
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
-  const [pageLimit, setPageLimit] = useState(8);
+  const [pageLimit, setPageLimit] = useState(10);
   const [pageCount, setPageCount] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -101,7 +101,7 @@ export function HomePage() {
       .then((res) => {
         if (res.statusText === 'OK') {
           setItems(res.data);
-
+          setPageCount(Math.ceil(items.length / pageLimit) + 1);
           setIsLoading(false);
         }
       })
