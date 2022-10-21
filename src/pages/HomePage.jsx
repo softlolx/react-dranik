@@ -156,9 +156,7 @@ export function HomePage() {
           />
         )}
       </Categories>
-      <Main>
-        {isLoading ? [...new Array(10)].map((_, i) => <ItemSceleton key={i} />) : draniks}
-      </Main>
+      <Main>{isLoading ? [...new Array(8)].map((_, i) => <ItemSceleton key={i} />) : draniks}</Main>
       <Pagination onPageChange={handlePageChange} pageLimit={pageLimit} pageCount={pageCount} />
     </>
   );

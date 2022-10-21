@@ -1,6 +1,22 @@
 import styles from './CartItem.module.scss';
+import { useDispatch } from 'react-redux';
+import { plusItem, minusItem, removeCartItem } from '../../redux/slices/cartSlice';
 
-export function CartItem({ id, title, price, imgUrl, type, size, count }) {
+export function CartItem({ id, title, price, imgUrl, type, size, count, unitPrice }) {
+  const dispatch = useDispatch();
+
+  function handleDeleteItem() {
+    dispatch(removeCartItem({ id, unitPrice, count }));
+  }
+
+  function handlePlusItem() {
+    dispatch(plusItem({ id, price }));
+  }
+
+  function handleMinusItem() {
+    dispatch(minusItem({ id, price }));
+  }
+
   return (
     <div className={styles.cartItem}>
       <div className={styles.product}>
@@ -13,12 +29,12 @@ export function CartItem({ id, title, price, imgUrl, type, size, count }) {
         </div>
       </div>
       <div className={styles.cartItem__qtyContainer}>
-        <button className={styles.cartItem__removeQtyButton}></button>
+        <button className={styles.cartItem__removeQtyButton} onClick={handleMinusItem}></button>
         <span className={styles.cartItem__qty}>{count}</span>
-        <button className={styles.cartItem__addQtyButton}></button>
+        <button className={styles.cartItem__addQtyButton} onClick={handlePlusItem}></button>
       </div>
-      <span className={styles.cartItem__sum}>{price}</span>
-      <button className={styles.cartItem__removeButton}></button>
+      <span className={styles.cartItem__sum}>{unitPrice}</span>
+      <button className={styles.cartItem__removeButton} onClick={handleDeleteItem}></button>
     </div>
   );
 }

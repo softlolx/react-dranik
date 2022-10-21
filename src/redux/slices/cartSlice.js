@@ -15,14 +15,34 @@ export const cartSlice = createSlice({
 
       if (findDouble) {
         findDouble.count += 1;
+        findDouble.unitPrice += action.payload.price;
       } else {
-        state.cartItems.push({ ...action.payload, count: 1 });
+        state.cartItems.push({ ...action.payload, count: 1, unitPrice: action.payload.price });
       }
       state.totalQty += 1;
       state.totalPrice += action.payload.price;
     },
+    plusItem: (state, action) => {
+      console.log(action);
+      const item = state.cartItems.find((item) => item.id === action.payload.id);
+
+      item.count += 1;
+      item.unitPrice += action.payload.price;
+      state.totalQty += 1;
+      state.totalPrice += action.payload.price;
+    },
+    minusItem: (state, action) => {
+      const item = state.cartItems.find((item) => item.id === action.payload.id);
+
+      item.count -= 1;
+      item.unitPrice -= action.payload.price;
+      state.totalQty -= 1;
+      state.totalPrice -= action.payload.price;
+    },
     removeCartItem: (state, action) => {
-      state.cartItems.filter((item) => item.id !== action.payload);
+      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload.id);
+      state.totalQty -= action.payload.count;
+      state.totalPrice -= action.payload.unitPrice;
     },
     clearCart: (state) => {
       state.cartItems = [];
@@ -33,6 +53,6 @@ export const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addCartItem, removeCartItem, clearCart } = cartSlice.actions;
+export const { addCartItem, plusItem, minusItem, removeCartItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

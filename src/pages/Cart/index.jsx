@@ -23,7 +23,7 @@ export function Cart() {
         </button>
       </div>
       <div className={styles.cartItemsContainer}>
-        {cartItems.map((item, index) => {
+        {cartItems?.map((item, index) => {
           return (
             <CartItem
               key={item.id + index}
@@ -34,6 +34,7 @@ export function Cart() {
               type={item.type}
               size={item.size}
               count={item.count}
+              unitPrice={item.unitPrice}
             />
           );
         })}
