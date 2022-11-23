@@ -11,6 +11,7 @@ import {
   setSortOrder,
   setSortOptions,
 } from '../redux/slices/sortSlice';
+import { setItems } from '../redux/slices/draniksSlice';
 
 import { Categories } from '../components/Categories';
 import { Main } from '../components/Main';
@@ -29,12 +30,13 @@ export function HomePage() {
   const sortOption = useSelector((state) => state.sort.sortOption);
   const sortOptionText = useSelector((state) => state.sort.sortOptionText);
   const sortOrder = useSelector((state) => state.sort.sortOrder);
+  const items = useSelector((state) => state.draniks.items);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { searchBarValue, setSearchBarValue } = useContext(SearchContext);
 
-  const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const isSearching = useRef(false);
   const isMounted = useRef(false);
@@ -43,6 +45,10 @@ export function HomePage() {
   const [pageLimit, setPageLimit] = useState(6);
   const [pageCount, setPageCount] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    getItems();
+  }, [currentPage, selectedCategory, sortOrder, sortOption, searchBarValue]);
 
   useEffect(() => {
     if (isMounted.current) {
@@ -64,13 +70,6 @@ export function HomePage() {
       isSearching.current = true;
     }
   }, []);
-
-  useEffect(() => {
-    // if (!isSearching.current) {
-    // }
-    // isSearching.current = false;
-    getItems();
-  }, [currentPage, selectedCategory, sortOrder, sortOption, searchBarValue]);
 
   useEffect(() => {
     setPageCount(Math.floor(draniks.length / pageLimit) + 1);
@@ -97,7 +96,7 @@ export function HomePage() {
     window.scroll(0, 0);
 
     try {
-      const res = await axios.get(
+      const { data } = await axios.get(
         `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${sortOption}&order=${
           sortOrder ? 'desc' : 'asc'
         }${selectedCategory > 0 ? '&category=' + `${selectedCategory}` : ''}${
@@ -105,10 +104,9 @@ export function HomePage() {
         }`
       );
 
-      if (res.statusText === 'OK') {
-        setItems(res.data);
-        setIsLoading(false);
-      }
+      dispatch(setItems(data));
+
+      setIsLoading(false);
     } catch (error) {
       console.log(error.code);
     } finally {

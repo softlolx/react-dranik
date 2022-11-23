@@ -1,12 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import categoryReducer from "./slices/categorySlice";
-import sortReducer from "./slices/sortSlice";
-import cartReducer from "./slices/cartSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import category from './slices/categorySlice';
+import sort from './slices/sortSlice';
+import cart from './slices/cartSlice';
+import draniks from './slices/draniksSlice';
 
 export const store = configureStore({
   reducer: {
-    category: categoryReducer,
-    sort: sortReducer,
-    cart: cartReducer,
+    category,
+    sort,
+    cart,
+    draniks,
   },
 });
