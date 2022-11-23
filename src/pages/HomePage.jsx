@@ -72,6 +72,10 @@ export function HomePage() {
     getItems();
   }, [currentPage, selectedCategory, sortOrder, sortOption, searchBarValue]);
 
+  useEffect(() => {
+    setPageCount(Math.floor(draniks.length / pageLimit) + 1);
+  }, [items]);
+
   const draniks = items?.map((item) => {
     return (
       <Item
@@ -101,7 +105,7 @@ export function HomePage() {
       .then((res) => {
         if (res.statusText === 'OK') {
           setItems(res.data);
-          setPageCount(Math.ceil(items.length / pageLimit) + 1);
+          // setPageCount(Math.ceil(items.length / pageLimit) + 1);
           setIsLoading(false);
         }
       })
