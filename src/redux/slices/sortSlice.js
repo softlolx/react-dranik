@@ -10,18 +10,18 @@ export const sortSlice = createSlice({
   name: 'sort',
   initialState,
   reducers: {
-    setSortOption: (state, option) => {
-      state.sortOption = option.payload;
+    setSortOption: (state, action) => {
+      state.sortOption = action.payload;
     },
-    setSortOptionText: (state, option) => {
-      state.sortOptionText = option.payload;
+    setSortOptionText: (state, action) => {
+      state.sortOptionText = action.payload;
     },
     setSortOrder: (state) => {
       state.sortOrder = !state.sortOrder;
     },
-    setSortOptions: (state, option) => {
-      state.sortOption = option.payload.sortOption;
-      state.sortOptionText = option.payload.sortOptionText;
+    setSortOptions: (state, action) => {
+      state.sortOption = action.payload.sortOption;
+      state.sortOptionText = action.payload.sortOptionText;
     },
   },
 });
