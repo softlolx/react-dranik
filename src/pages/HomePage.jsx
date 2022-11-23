@@ -92,29 +92,30 @@ export function HomePage() {
     );
   });
 
-  function getItems() {
+  async function getItems() {
     setIsLoading(true);
-    axios
-      .get(
+    window.scroll(0, 0);
+
+    try {
+      const res = await axios.get(
         `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${sortOption}&order=${
           sortOrder ? 'desc' : 'asc'
         }${selectedCategory > 0 ? '&category=' + `${selectedCategory}` : ''}${
           searchBarValue.length > 0 ? '&search=' + `${searchBarValue}` : ''
         }`
-      )
-      .then((res) => {
-        if (res.statusText === 'OK') {
-          setItems(res.data);
-          // setPageCount(Math.ceil(items.length / pageLimit) + 1);
-          setIsLoading(false);
-        }
-      })
-      .catch((error) => console.log(error.code))
-      .finally(() => {
-        if (sortOption === 'rating' && selectedCategory === '0') {
-          navigate(``);
-        }
-      });
+      );
+
+      if (res.statusText === 'OK') {
+        setItems(res.data);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error.code);
+    } finally {
+      if (sortOption === 'rating' && selectedCategory === '0') {
+        navigate(``);
+      }
+    }
   }
 
   function handleSelectSortOption(text, value) {
