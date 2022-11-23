@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  sortOption: "rating",
-  sortOptionText: "популярности",
+  sortOption: 'rating',
+  sortOptionText: 'популярности',
   sortOrder: true,
 };
 
 export const sortSlice = createSlice({
-  name: "sort",
+  name: 'sort',
   initialState,
   reducers: {
     setSortOption: (state, option) => {
@@ -22,8 +22,6 @@ export const sortSlice = createSlice({
     setSortOptions: (state, option) => {
       state.sortOption = option.payload.sortOption;
       state.sortOptionText = option.payload.sortOptionText;
-
-      console.log(option);
     },
   },
 });
