@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import qs from 'qs';
 
 import { setSelectedCategory, setCategoryFromUrl } from '../redux/slices/categorySlice';
@@ -11,7 +10,7 @@ import {
   setSortOrder,
   setSortOptions,
 } from '../redux/slices/sortSlice';
-import { setItems } from '../redux/slices/draniksSlice';
+import { fetchDraniks, setIsLoading } from '../redux/slices/draniksSlice';
 
 import { Categories } from '../components/Categories';
 import { Main } from '../components/Main';
@@ -23,21 +22,19 @@ import { Pagination } from '../components/Pagination';
 import { SearchContext } from '../contexts/SearchContext';
 import { useRef } from 'react';
 
-const BASE_URL = 'https://6323b8a1bb2321cba91e1779.mockapi.io';
-
 export function HomePage() {
   const selectedCategory = useSelector((state) => state.category.value);
   const sortOption = useSelector((state) => state.sort.sortOption);
   const sortOptionText = useSelector((state) => state.sort.sortOptionText);
   const sortOrder = useSelector((state) => state.sort.sortOrder);
   const items = useSelector((state) => state.draniks.items);
+  const isLoading = useSelector((state) => state.draniks.isLoading);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { searchBarValue, setSearchBarValue } = useContext(SearchContext);
 
-  const [isLoading, setIsLoading] = useState(true);
   const isSearching = useRef(false);
   const isMounted = useRef(false);
 
@@ -92,27 +89,27 @@ export function HomePage() {
   });
 
   async function getItems() {
-    setIsLoading(true);
+    dispatch(setIsLoading(true));
     window.scroll(0, 0);
 
     try {
-      const { data } = await axios.get(
-        `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${sortOption}&order=${
-          sortOrder ? 'desc' : 'asc'
-        }${selectedCategory > 0 ? '&category=' + `${selectedCategory}` : ''}${
-          searchBarValue.length > 0 ? '&search=' + `${searchBarValue}` : ''
-        }`
+      dispatch(
+        fetchDraniks({
+          currentPage,
+          pageLimit,
+          sortOption,
+          sortOrder,
+          selectedCategory,
+          searchBarValue,
+        })
       );
-
-      dispatch(setItems(data));
-
-      setIsLoading(false);
     } catch (error) {
       console.log(error.code);
     } finally {
       if (sortOption === 'rating' && selectedCategory === '0') {
         navigate(``);
       }
+      dispatch(setIsLoading(false));
     }
   }
 
