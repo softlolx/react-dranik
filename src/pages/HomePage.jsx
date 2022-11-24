@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
@@ -16,6 +16,7 @@ import {
   selectSorting,
 } from '../redux/slices/sortSlice';
 import { fetchDraniks, selectDraniks } from '../redux/slices/draniksSlice';
+import { setSearchBarValue, selectSearch } from '../redux/slices/searchSlice';
 
 import { Categories } from '../components/Categories';
 import { Main } from '../components/Main';
@@ -24,18 +25,16 @@ import { SortPopup } from '../components/SortPopup';
 
 import ItemSceleton from '../components/Item/ItemSceleton';
 import { Pagination } from '../components/Pagination';
-import { SearchContext } from '../contexts/SearchContext';
 import { useRef } from 'react';
 
 export function HomePage() {
   const selectedCategory = useSelector(selectCategory);
   const { sortOption, sortOptionText, sortOrder } = useSelector(selectSorting);
+  const { searchBarValue } = useSelector(selectSearch);
   const { items, isLoading } = useSelector(selectDraniks);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const { searchBarValue, setSearchBarValue } = useContext(SearchContext);
 
   const isSearching = useRef(false);
   const isMounted = useRef(false);
@@ -133,7 +132,7 @@ export function HomePage() {
   }
 
   function handleSearchBarChange(e) {
-    setSearchBarValue(e.target.value);
+    dispatch(setSearchBarValue(e.target.value));
   }
 
   function handlePageChange(page) {
