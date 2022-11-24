@@ -3,14 +3,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
-import { setSelectedCategory, setCategoryFromUrl } from '../redux/slices/categorySlice';
+import {
+  setSelectedCategory,
+  setCategoryFromUrl,
+  selectCategory,
+} from '../redux/slices/categorySlice';
 import {
   setSortOption,
   setSortOptionText,
   setSortOrder,
   setSortOptions,
+  selectSorting,
 } from '../redux/slices/sortSlice';
-import { fetchDraniks, setIsLoading } from '../redux/slices/draniksSlice';
+import { fetchDraniks, selectDraniks } from '../redux/slices/draniksSlice';
 
 import { Categories } from '../components/Categories';
 import { Main } from '../components/Main';
@@ -23,12 +28,9 @@ import { SearchContext } from '../contexts/SearchContext';
 import { useRef } from 'react';
 
 export function HomePage() {
-  const selectedCategory = useSelector((state) => state.category.value);
-  const sortOption = useSelector((state) => state.sort.sortOption);
-  const sortOptionText = useSelector((state) => state.sort.sortOptionText);
-  const sortOrder = useSelector((state) => state.sort.sortOrder);
-  const items = useSelector((state) => state.draniks.items);
-  const isLoading = useSelector((state) => state.draniks.isLoading);
+  const selectedCategory = useSelector(selectCategory);
+  const { sortOption, sortOptionText, sortOrder } = useSelector(selectSorting);
+  const { items, isLoading } = useSelector(selectDraniks);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

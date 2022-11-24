@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: 0,
 };
 
 export const categorySlice = createSlice({
-  name: "category",
+  name: 'category',
   initialState,
   reducers: {
     setSelectedCategory: (state, category) => {
@@ -17,7 +17,8 @@ export const categorySlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
+export const selectCategory = (state) => state.category;
+
 export const { setSelectedCategory, setCategoryFromUrl } = categorySlice.actions;
 
 export default categorySlice.reducer;

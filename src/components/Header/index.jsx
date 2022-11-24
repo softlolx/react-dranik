@@ -1,14 +1,15 @@
-import styles from "./Header.module.scss";
-import { useSelector } from "react-redux";
-import logo from "../../images/logo.svg";
-import { Link } from "react-router-dom";
+import styles from './Header.module.scss';
+import { useSelector } from 'react-redux';
+import logo from '../../images/logo.svg';
+import { Link } from 'react-router-dom';
+import { selectCart } from '../../redux/slices/cartSlice';
 
 export function Header() {
-  const { totalQty, totalPrice } = useSelector((state) => state.cart);
+  const { totalQty, totalPrice } = useSelector(selectCart);
 
   return (
     <header className={styles.header}>
-      <Link to={"/"}>
+      <Link to={'/'}>
         <div className={styles.header__logoContainer}>
           <img src={logo} alt="#" className={styles.header__logo} />
           <div className={styles.header__titleContainer}>
@@ -18,7 +19,7 @@ export function Header() {
         </div>
       </Link>
 
-      <Link to={"/cart"}>
+      <Link to={'/cart'}>
         <button className={styles.cartButton}>
           <span className={styles.cartButton__sum}>{totalPrice}&#160;&#8381;</span>
           <div className={styles.cartButton__line}></div>

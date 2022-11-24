@@ -47,6 +47,8 @@ export const draniksSlice = createSlice({
   },
 });
 
+export const selectDraniks = (state) => state.draniks;
+
 export const { setItems, setIsLoading } = draniksSlice.actions;
 
 export default draniksSlice.reducer;

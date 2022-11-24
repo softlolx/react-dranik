@@ -2,11 +2,11 @@ import styles from './Cart.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { CartItem } from '../../components/CartItem';
-import { clearCart } from '../../redux/slices/cartSlice';
+import { clearCart, selectCart } from '../../redux/slices/cartSlice';
 
 export function Cart() {
   const dispatch = useDispatch();
-  const { cartItems, totalQty, totalPrice } = useSelector((state) => state.cart);
+  const { cartItems, totalQty, totalPrice } = useSelector(selectCart);
   function handleCartClear() {
     dispatch(clearCart());
   }
