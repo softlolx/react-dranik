@@ -32,8 +32,17 @@ export const draniksSlice = createSlice({
     },
   },
   extraReducers: {
+    [fetchDraniks.pending]: (state) => {
+      state.isLoading = true;
+      state.items = [];
+    },
     [fetchDraniks.fulfilled]: (state, action) => {
       state.items = action.payload;
+      state.isLoading = false;
+    },
+    [fetchDraniks.rejected]: (state) => {
+      state.items = [];
+      state.isLoading = true;
     },
   },
 });

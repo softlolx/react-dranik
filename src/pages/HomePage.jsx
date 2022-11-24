@@ -89,7 +89,6 @@ export function HomePage() {
   });
 
   async function getItems() {
-    dispatch(setIsLoading(true));
     window.scroll(0, 0);
 
     try {
@@ -109,7 +108,6 @@ export function HomePage() {
       if (sortOption === 'rating' && selectedCategory === '0') {
         navigate(``);
       }
-      dispatch(setIsLoading(false));
     }
   }
 
