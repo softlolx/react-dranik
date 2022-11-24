@@ -93,7 +93,7 @@ export function HomePage() {
     window.scroll(0, 0);
 
     try {
-      dispatch(
+      await dispatch(
         fetchDraniks({
           currentPage,
           pageLimit,
