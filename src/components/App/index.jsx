@@ -7,6 +7,7 @@ import { Header } from '../Header';
 import { HomePage } from '../../pages/HomePage';
 import { Cart } from '../../pages/Cart';
 import { NotFound } from '../../pages/NotFound/NotFound';
+import { DranikFull } from '../../pages/DranikFull';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="cart" element={<Cart />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/dranik/:id" element={<DranikFull />}></Route>
         </Routes>
       </section>
     </div>
