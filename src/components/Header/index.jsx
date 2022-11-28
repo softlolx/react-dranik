@@ -1,11 +1,13 @@
 import styles from './Header.module.scss';
 import { useSelector } from 'react-redux';
 import logo from '../../images/logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { selectCart } from '../../redux/slices/cartSlice';
 
 export function Header() {
   const { totalQty, totalPrice } = useSelector(selectCart);
+
+  const { pathname } = useLocation();
 
   return (
     <header className={styles.header}>
@@ -19,16 +21,18 @@ export function Header() {
         </div>
       </Link>
 
-      <Link to={'/cart'}>
-        <button className={styles.cartButton}>
-          <span className={styles.cartButton__sum}>{totalPrice}&#160;&#8381;</span>
-          <div className={styles.cartButton__line}></div>
-          <div className={styles.cartButton__qtyContainer}>
-            <div className={styles.cartButton__cartIcon}></div>
-            <span className={styles.cartButton__totalQty}>{totalQty}</span>
-          </div>
-        </button>
-      </Link>
+      {pathname !== '/cart' && (
+        <Link to={'/cart'}>
+          <button className={styles.cartButton}>
+            <span className={styles.cartButton__sum}>{totalPrice}&#160;&#8381;</span>
+            <div className={styles.cartButton__line}></div>
+            <div className={styles.cartButton__qtyContainer}>
+              <div className={styles.cartButton__cartIcon}></div>
+              <span className={styles.cartButton__totalQty}>{totalQty}</span>
+            </div>
+          </button>
+        </Link>
+      )}
     </header>
   );
 }
