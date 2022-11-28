@@ -19,7 +19,11 @@
     }
   }
 
+  &__imageLink {
+  }
+
   &__image {
+    max-width: 100%;
     border-radius: 12px;
     height: 160px;
 

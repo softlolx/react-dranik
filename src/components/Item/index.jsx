@@ -1,21 +1,19 @@
 import { useState } from 'react';
 import styles from './Item.module.scss';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { addCartItem } from '../../redux/slices/cartSlice';
 
 export function Item({ id, imgUrl, title, price, types, sizes, category, rating }) {
   const dispatch = useDispatch();
 
-  // const [addCount, setAddCount] = useState(0);
   const [selectedType, setSelectedType] = useState('0');
   const [selectedSize, setSelectedSize] = useState('M');
 
   const itemTypes = ['диетические', 'со\u00A0сметаной'];
 
   function handleAddButtonCLick() {
-    // setAddCount((prev) => prev + 1);
-
     const item = {
       id,
       title,
@@ -38,7 +36,9 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
 
   return (
     <div className={styles.item}>
-      <img src={imgUrl} alt="#" className={styles.item__image} />
+      <Link to={`/dranik/${id}`} className={styles.item__imageLink}>
+        <img src={imgUrl} alt="#" className={styles.item__image} />
+      </Link>
       <h3 className={styles.item__name}>{title}</h3>
       <div className={styles.item__configContainer}>
         <div className={styles.item__specificButtons}>
@@ -79,7 +79,6 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
         <button className={`${styles.item__addButton} `} onClick={handleAddButtonCLick}>
           <div className={styles.item__addButtonIcon}></div>
           <span className={`${styles.item__addButtonText} `}>Добавить</span>
-          {/* {addCount > 0 && <span className={styles.item__addButtonQty}>{addCount}</span>} */}
         </button>
       </div>
     </div>
