@@ -1,15 +1,24 @@
 import styles from './SortPopup.module.scss';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+
+type OptionsListType = {
+  name: string;
+  value: string;
+};
+
 export function SortPopup({ onOptionSelect, onSortPopupClick }) {
-  const optionsList = [
+  const optionsList: OptionsListType[] = [
     { name: 'популярности', value: 'rating' },
     { name: 'цене', value: 'price' },
     { name: 'алфавиту', value: 'title' },
   ];
 
-  const sortPopupRef = useRef();
+  const sortPopupRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (e) => {
+  const handleClickOutside = (e: Event) => {
+    if (sortPopupRef.current === null) {
+      return;
+    }
     if (!sortPopupRef.current.contains(e.target)) {
       onSortPopupClick();
     }
@@ -20,14 +29,14 @@ export function SortPopup({ onOptionSelect, onSortPopupClick }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   });
 
-  function handleOptionClick(evt) {
+  function handleOptionClick(evt: Event) {
     onOptionSelect(evt.target.innerText, evt.target.id);
   }
 
   return (
     <div ref={sortPopupRef} className={styles.sort__optionContainer}>
       <ul className={styles.sort__optionList}>
-        {optionsList.map((item) => {
+        {optionsList.map((item: OptionsListType) => {
           return (
             <li
               key={item.value}
