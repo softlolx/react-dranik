@@ -26,7 +26,6 @@ import { SortPopup } from '../components/SortPopup';
 import ItemSceleton from '../components/Item/ItemSceleton';
 import { Pagination } from '../components/Pagination';
 import { useRef } from 'react';
-import { ErrorCallback } from 'typescript';
 
 type MainItemProps = {
   id: string;
@@ -51,7 +50,7 @@ export function HomePage() {
   const isSearching = useRef(false);
   const isMounted = useRef(false);
 
-  const [isSortPopupOpened, setIsSortPopupOpened] = useState(false);
+  const [isSortPopupOpened, setIsSortPopupOpened] = useState<any>(false);
   const [pageLimit, setPageLimit] = useState(6);
   const [pageCount, setPageCount] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
@@ -128,7 +127,7 @@ export function HomePage() {
   function handleSelectSortOption(text: string, value: string) {
     dispatch(setSortOption(value));
     dispatch(setSortOptionText(text));
-    setIsSortPopupOpened((prev) => !prev);
+    setIsSortPopupOpened((prev: Boolean) => !prev);
   }
 
   function handleSortOrderChange() {
@@ -136,7 +135,7 @@ export function HomePage() {
   }
 
   function handleSortPopupClick() {
-    setIsSortPopupOpened((prev) => !prev);
+    setIsSortPopupOpened((prev: Boolean) => !prev);
   }
 
   function handleCategorySelect(id: string) {
@@ -144,8 +143,8 @@ export function HomePage() {
     setCurrentPage(1);
   }
 
-  function handleSearchBarChange(e: Event) {
-    dispatch(setSearchBarValue(e.target?.value));
+  function handleSearchBarChange(e: InputEvent) {
+    dispatch(setSearchBarValue((e.target as HTMLInputElement)?.value));
   }
 
   function handlePageChange(page: number) {
@@ -161,12 +160,12 @@ export function HomePage() {
         onSearchBarChange={handleSearchBarChange}
         searchBarValue={searchBarValue}
       >
-        {isSortPopupOpened && (
+        {isSortPopupOpened ? (
           <SortPopup
             onSortPopupClick={handleSortPopupClick}
             onOptionSelect={handleSelectSortOption}
           />
-        )}
+        ) : null}
       </Categories>
       <Main>{isLoading ? [...new Array(8)].map((_, i) => <ItemSceleton key={i} />) : draniks}</Main>
       <Pagination onPageChange={handlePageChange} pageLimit={pageLimit} pageCount={pageCount} />

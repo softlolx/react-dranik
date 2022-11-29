@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Categories.module.scss';
 
 import { SearchBar } from '../SearchBar';
@@ -5,10 +6,10 @@ import { useSelector } from 'react-redux';
 
 type CategorieProps = {
   children: JSX.Element;
-  onSortPopupClick: Function;
-  onCategorySelect: Function;
-  onChangeSortOrder: Function;
-  onSearchBarChange: Function;
+  onSortPopupClick: () => void;
+  onCategorySelect: (e: string) => void;
+  onChangeSortOrder: () => void;
+  onSearchBarChange: (e: InputEvent, searchBarValue?: string) => void;
 };
 
 export function Categories({
@@ -20,8 +21,8 @@ export function Categories({
 }: CategorieProps) {
   const categories = ['Все', 'Мясные', 'Веганские', 'Грибные', 'Рыбные', 'Острые'];
 
-  function handleCategoryClick(evt) {
-    onCategorySelect(evt.target.id);
+  function handleCategoryClick(evt: React.MouseEvent) {
+    onCategorySelect((evt.target as Element)?.id);
   }
 
   const selectedCategory = useSelector((state) => state.category.value);

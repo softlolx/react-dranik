@@ -37,12 +37,12 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
     dispatch(addCartItem(item));
   }
 
-  function handleTypeClick(evt) {
-    setSelectedType(evt.target.id);
+  function handleTypeClick(evt: MouseEvent) {
+    setSelectedType((evt.target as Element)?.id);
   }
 
-  function handleSizeClick(evt) {
-    setSelectedSize(evt.target.id);
+  function handleSizeClick(evt: MouseEvent) {
+    setSelectedSize((evt.target as Element)?.id);
   }
 
   return (

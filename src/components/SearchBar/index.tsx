@@ -4,8 +4,8 @@ import styles from './SearchBar.module.scss';
 import debounce from 'lodash/debounce';
 
 type SearchBarProps = {
-  searchBarValue: string;
-  onSearchBarChange: Function;
+  searchBarValue?: string;
+  onSearchBarChange: (e: InputEvent) => void;
 };
 
 export function SearchBar({ searchBarValue, onSearchBarChange }: SearchBarProps) {
