@@ -20,8 +20,8 @@ export function SortPopup({ onOptionSelect, onSortPopupClick }: SortPopupProps) 
 
   const sortPopupRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (evt: React.MouseEvent) => {
-    if (!sortPopupRef.current?.contains(evt.target)) {
+  const handleClickOutside = (evt: MouseEvent) => {
+    if (!sortPopupRef.current?.contains(evt.target as Element)) {
       onSortPopupClick();
     }
   };
@@ -31,8 +31,8 @@ export function SortPopup({ onOptionSelect, onSortPopupClick }: SortPopupProps) 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   });
 
-  function handleOptionClick(evt: Event) {
-    onOptionSelect(evt.target?.innerText, evt.target?.id);
+  function handleOptionClick(evt: React.MouseEvent) {
+    onOptionSelect((evt.target as HTMLElement)?.innerText, (evt.target as Element)?.id);
   }
 
   return (

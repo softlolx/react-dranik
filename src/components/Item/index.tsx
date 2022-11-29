@@ -37,11 +37,11 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
     dispatch(addCartItem(item));
   }
 
-  function handleTypeClick(evt: MouseEvent) {
+  function handleTypeClick(evt: React.MouseEvent) {
     setSelectedType((evt.target as Element)?.id);
   }
 
-  function handleSizeClick(evt: MouseEvent) {
+  function handleSizeClick(evt: React.MouseEvent) {
     setSelectedSize((evt.target as Element)?.id);
   }
 

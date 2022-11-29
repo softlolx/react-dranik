@@ -5,11 +5,12 @@ import { SearchBar } from '../SearchBar';
 import { useSelector } from 'react-redux';
 
 type CategorieProps = {
-  children: JSX.Element;
+  children: any;
   onSortPopupClick: () => void;
   onCategorySelect: (e: string) => void;
   onChangeSortOrder: () => void;
   onSearchBarChange: (e: InputEvent, searchBarValue?: string) => void;
+  searchBarValue: string;
 };
 
 export function Categories({
