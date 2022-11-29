@@ -9,7 +9,7 @@ type SearchBarProps = {
 };
 
 export function SearchBar({ searchBarValue, onSearchBarChange }: SearchBarProps) {
-  const searchBarRef = useRef(null);
+  const searchBarRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (window.innerWidth > 1024) {
