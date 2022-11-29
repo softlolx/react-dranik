@@ -1,7 +1,15 @@
-import styles from "./Categories.module.scss";
+import styles from './Categories.module.scss';
 
-import { SearchBar } from "../SearchBar";
-import { useSelector } from "react-redux";
+import { SearchBar } from '../SearchBar';
+import { useSelector } from 'react-redux';
+
+type CategorieProps = {
+  children: JSX.Element;
+  onSortPopupClick: Function;
+  onCategorySelect: Function;
+  onChangeSortOrder: Function;
+  onSearchBarChange: Function;
+};
 
 export function Categories({
   children,
@@ -9,8 +17,8 @@ export function Categories({
   onCategorySelect,
   onChangeSortOrder,
   onSearchBarChange,
-}) {
-  const categories = ["Все", "Мясные", "Веганские", "Грибные", "Рыбные", "Острые"];
+}: CategorieProps) {
+  const categories = ['Все', 'Мясные', 'Веганские', 'Грибные', 'Рыбные', 'Острые'];
 
   function handleCategoryClick(evt) {
     onCategorySelect(evt.target.id);
@@ -29,7 +37,7 @@ export function Categories({
               key={index}
               id={index}
               className={`${styles.cat__item} ${
-                selectedCategory == index ? styles.cat__item_active : ""
+                selectedCategory == index ? styles.cat__item_active : ''
               }`}
               onClick={handleCategoryClick}
             >
@@ -42,7 +50,7 @@ export function Categories({
       <div className={styles.sort}>
         <button
           className={`${styles.sort__directionButton} ${
-            !sortOrder ? "" : styles.sort__directionButton_updown
+            !sortOrder ? '' : styles.sort__directionButton_updown
           }`}
           onClick={onChangeSortOrder}
         ></button>
