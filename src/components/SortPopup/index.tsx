@@ -1,12 +1,17 @@
 import styles from './SortPopup.module.scss';
 import React, { useEffect, useRef } from 'react';
 
+type SortPopupProps = {
+  onOptionSelect: Function;
+  onSortPopupClick: Function;
+};
+
 type OptionsListType = {
   name: string;
   value: string;
 };
 
-export function SortPopup({ onOptionSelect, onSortPopupClick }) {
+export function SortPopup({ onOptionSelect, onSortPopupClick }: SortPopupProps) {
   const optionsList: OptionsListType[] = [
     { name: 'популярности', value: 'rating' },
     { name: 'цене', value: 'price' },

@@ -2,7 +2,27 @@ import styles from './CartItem.module.scss';
 import { useDispatch } from 'react-redux';
 import { plusItem, minusItem, removeCartItem } from '../../redux/slices/cartSlice';
 
-export function CartItem({ id, title, price, imgUrl, type, size, count, unitPrice }) {
+type CartItemProps = {
+  id: string;
+  title: string;
+  price: number;
+  imgUrl: string;
+  type: number;
+  size: string;
+  count: number;
+  unitPrice: number;
+};
+
+export function CartItem({
+  id,
+  title,
+  price,
+  imgUrl,
+  type,
+  size,
+  count,
+  unitPrice,
+}: CartItemProps) {
   const dispatch = useDispatch();
 
   function handleDeleteItem() {
