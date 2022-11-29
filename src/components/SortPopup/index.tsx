@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 
 type SortPopupProps = {
   onOptionSelect: Function;
-  onSortPopupClick: Function;
+  onSortPopupClick: () => void;
 };
 
 type OptionsListType = {
@@ -20,11 +20,8 @@ export function SortPopup({ onOptionSelect, onSortPopupClick }: SortPopupProps) 
 
   const sortPopupRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (e: Event) => {
-    if (sortPopupRef.current === null) {
-      return;
-    }
-    if (!sortPopupRef.current.contains(e.target)) {
+  const handleClickOutside = (evt: React.MouseEvent) => {
+    if (!sortPopupRef.current?.contains(evt.target)) {
       onSortPopupClick();
     }
   };
