@@ -1,3 +1,4 @@
+import React from 'react';
 import { ReactElement } from 'react';
 import { useState } from 'react';
 import styles from './DranikFull.module.scss';
@@ -61,7 +62,7 @@ export function DranikFull(): ReactElement {
               return (
                 <button
                   key={index}
-                  id={item}
+                  id={item.toString()}
                   className={`${styles.item__specificButton} ${
                     selectedType === item.toString() ? styles.item__specificButton_active : ''
                   }`}
