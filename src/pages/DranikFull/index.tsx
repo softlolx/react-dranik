@@ -1,15 +1,21 @@
+import { ReactElement } from 'react';
 import { useState } from 'react';
 import styles from './DranikFull.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { fetchDraniks, selectDraniks } from '../../redux/slices/draniksSlice';
 import { addCartItem } from '../../redux/slices/cartSlice';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-export function DranikFull() {
-  const [item, setItem] = useState();
+export function DranikFull(): ReactElement {
+  const [item, setItem] = useState<{
+    imageUrl: string;
+    title: string;
+    price: string;
+    types: number[];
+    sizes: string[];
+  }>();
   const [selectedType, setSelectedType] = useState('0');
   const [selectedSize, setSelectedSize] = useState('M');
 
@@ -44,8 +50,8 @@ export function DranikFull() {
     setSelectedSize(evt.target.id);
   }
 
-  return (
-    item && (
+  if (item) {
+    return (
       <div className={styles.item}>
         <img src={item.imageUrl} alt="#" className={styles.item__image} />
         <h3 className={styles.item__name}>{item.title}</h3>
@@ -91,6 +97,8 @@ export function DranikFull() {
           </button>
         </div>
       </div>
-    )
-  );
+    );
+  }
+
+  return <>It`s loading...</>;
 }
