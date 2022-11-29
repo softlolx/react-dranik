@@ -1,7 +1,13 @@
 import ReactPaginate from 'react-paginate';
 import styles from './Pagination.module.scss';
 
-export function Pagination({ onPageChange, pageLimit, pageCount }) {
+type PaginationProps = {
+  onPageChange: Function;
+  pageLimit: number;
+  pageCount: number;
+};
+
+export function Pagination({ onPageChange, pageLimit, pageCount }: PaginationProps) {
   return (
     <>
       <ReactPaginate
@@ -12,7 +18,6 @@ export function Pagination({ onPageChange, pageLimit, pageCount }) {
         pageRangeDisplayed={pageLimit}
         pageCount={pageCount}
         previousLabel="<"
-        renderOnZeroPageCount={null}
       />
     </>
   );
