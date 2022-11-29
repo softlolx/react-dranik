@@ -11,6 +11,17 @@ export function Cart() {
     dispatch(clearCart());
   }
 
+  type CartItemProps = {
+    id: string;
+    imgUrl: string;
+    title: string;
+    price: number;
+    type: number;
+    size: string;
+    count: number;
+    unitPrice: number;
+  };
+
   return (
     <section className={styles.cart}>
       <div className={styles.cart__header}>
@@ -23,7 +34,7 @@ export function Cart() {
         </button>
       </div>
       <div className={styles.cartItemsContainer}>
-        {cartItems?.map((item, index) => {
+        {cartItems?.map((item: CartItemProps, index: number) => {
           return (
             <CartItem
               key={item.id + index}

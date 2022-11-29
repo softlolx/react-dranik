@@ -43,12 +43,12 @@ export function DranikFull(): ReactElement {
     dispatch(addCartItem(item));
   }
 
-  function handleTypeClick(evt) {
-    setSelectedType(evt.target.id);
+  function handleTypeClick(evt: React.MouseEvent) {
+    setSelectedType((evt.target as Element).id);
   }
 
-  function handleSizeClick(evt) {
-    setSelectedSize(evt.target.id);
+  function handleSizeClick(evt: React.MouseEvent) {
+    setSelectedSize((evt.target as Element).id);
   }
 
   if (item) {
