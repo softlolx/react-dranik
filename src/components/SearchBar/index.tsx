@@ -13,7 +13,7 @@ export function SearchBar({ searchBarValue, onSearchBarChange }: SearchBarProps)
 
   useEffect(() => {
     if (window.innerWidth > 1024) {
-      searchBarRef.current.focus();
+      searchBarRef.current?.focus();
     }
   }, []);
 

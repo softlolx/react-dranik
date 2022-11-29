@@ -35,7 +35,7 @@ export function SortPopup({ onOptionSelect, onSortPopupClick }: SortPopupProps) 
   });
 
   function handleOptionClick(evt: Event) {
-    onOptionSelect(evt.target.innerText, evt.target.id);
+    onOptionSelect(evt.target?.innerText, evt.target?.id);
   }
 
   return (

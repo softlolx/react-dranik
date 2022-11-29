@@ -35,7 +35,7 @@ export function Categories({
           return (
             <li
               key={index}
-              id={index}
+              id={index.toString()}
               className={`${styles.cat__item} ${
                 selectedCategory == index ? styles.cat__item_active : ''
               }`}
