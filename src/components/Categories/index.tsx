@@ -26,9 +26,9 @@ export function Categories({
     onCategorySelect((evt.target as Element)?.id);
   }
 
-  const selectedCategory = useSelector((state) => state.category.value);
-  const sortOptionText = useSelector((state) => state.sort.sortOptionText);
-  const sortOrder = useSelector((state) => state.sort.sortOrder);
+  const selectedCategory = useSelector((state: any) => state.category.value);
+  const sortOptionText = useSelector((state: any) => state.sort.sortOptionText);
+  const sortOrder = useSelector((state: any) => state.sort.sortOrder);
 
   return (
     <section className={styles.cat}>
