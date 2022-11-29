@@ -1,8 +1,8 @@
-import React from "react";
-import ContentLoader from "react-content-loader";
-import styles from "./Item.module.scss";
+import React from 'react';
+import ContentLoader from 'react-content-loader';
+import styles from './Item.module.scss';
 
-const ItemSceleton = (props) => (
+const ItemSceleton = (props: Object) => (
   <ContentLoader
     className={styles.item}
     speed={2}

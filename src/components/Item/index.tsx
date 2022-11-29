@@ -5,7 +5,18 @@ import { Link } from 'react-router-dom';
 
 import { addCartItem } from '../../redux/slices/cartSlice';
 
-export function Item({ id, imgUrl, title, price, types, sizes, category, rating }) {
+type ItemProps = {
+  id: string;
+  imgUrl: string;
+  title: string;
+  price: number;
+  types: number[];
+  sizes: string[];
+  category: number;
+  rating: number;
+};
+
+export function Item({ id, imgUrl, title, price, types, sizes, category, rating }: ItemProps) {
   const dispatch = useDispatch();
 
   const [selectedType, setSelectedType] = useState('0');
@@ -46,7 +57,7 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
             return (
               <button
                 key={index}
-                id={item}
+                id={item.toString()}
                 className={`${styles.item__specificButton} ${
                   selectedType === item.toString() ? styles.item__specificButton_active : ''
                 }`}
