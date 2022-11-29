@@ -26,6 +26,18 @@ import { SortPopup } from '../components/SortPopup';
 import ItemSceleton from '../components/Item/ItemSceleton';
 import { Pagination } from '../components/Pagination';
 import { useRef } from 'react';
+import { ErrorCallback } from 'typescript';
+
+type MainItemProps = {
+  id: string;
+  imageUrl: string;
+  title: string;
+  price: number;
+  types: number[];
+  sizes: string[];
+  category: number;
+  rating: number;
+};
 
 export function HomePage() {
   const selectedCategory = useSelector(selectCategory);
@@ -73,7 +85,7 @@ export function HomePage() {
     setPageCount(Math.floor(draniks.length / pageLimit) + 1);
   }, [items]);
 
-  const draniks = items?.map((item) => {
+  const draniks = items?.map((item: MainItemProps) => {
     return (
       <Item
         key={item.id}
@@ -94,6 +106,7 @@ export function HomePage() {
 
     try {
       await dispatch(
+        // @ts-ignore
         fetchDraniks({
           currentPage,
           pageLimit,
@@ -103,7 +116,7 @@ export function HomePage() {
           searchBarValue,
         })
       );
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.code);
     } finally {
       if (sortOption === 'rating' && selectedCategory === '0') {
@@ -112,7 +125,7 @@ export function HomePage() {
     }
   }
 
-  function handleSelectSortOption(text, value) {
+  function handleSelectSortOption(text: string, value: string) {
     dispatch(setSortOption(value));
     dispatch(setSortOptionText(text));
     setIsSortPopupOpened((prev) => !prev);
@@ -126,16 +139,16 @@ export function HomePage() {
     setIsSortPopupOpened((prev) => !prev);
   }
 
-  function handleCategorySelect(id) {
+  function handleCategorySelect(id: string) {
     dispatch(setSelectedCategory(id));
     setCurrentPage(1);
   }
 
-  function handleSearchBarChange(e) {
-    dispatch(setSearchBarValue(e.target.value));
+  function handleSearchBarChange(e: Event) {
+    dispatch(setSearchBarValue(e.target?.value));
   }
 
-  function handlePageChange(page) {
+  function handlePageChange(page: number) {
     setCurrentPage(page);
   }
 
