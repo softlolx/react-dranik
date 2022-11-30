@@ -1,16 +1,14 @@
+@import '../../variables.scss';
+
 .cartItem {
+  @include flex(row, space-between);
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   box-sizing: border-box;
   padding: 10px 0;
   border-top: 1px solid #f4f4f4;
 
   &__qtyContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(row, space-between);
     gap: 8px;
 
     @media screen and (max-width: 769px) {
@@ -37,7 +35,7 @@
     padding: 0;
     width: 32px;
     height: 32px;
-    border: 2px solid #fe5f1e;
+    border: 2px solid $orangeMain;
     border-radius: 50%;
     background-image: url(../../images/addPlus.svg);
     background-position: center;
@@ -67,7 +65,7 @@
     padding: 0;
     width: 32px;
     height: 32px;
-    border: 2px solid #fe5f1e;
+    border: 2px solid $orangeMain;
     border-radius: 50%;
     background-image: url(../../images/minus.svg);
     background-position: center;
@@ -137,9 +135,7 @@
 }
 
 .product {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(row, space-between);
   gap: 15px;
 
   &__image {
@@ -157,10 +153,7 @@
   }
 
   &__descriptionContainer {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
+    @include flex(column, center);
     gap: 15px;
   }
 

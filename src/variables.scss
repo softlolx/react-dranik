@@ -1,0 +1,13 @@
+//Colors
+
+$orangeMain: #fe5f1e;
+$blackLite: #2c2c2c;
+
+//Mixins
+
+@mixin flex($dir: row, $jc: center) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $jc;
+  align-items: center;
+}

@@ -1,9 +1,10 @@
+@import '../../variables.scss';
+
 .header {
+  @include flex(row, space-between);
   width: 100%;
   box-sizing: border-box;
   padding: 24px 36px;
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid #f7f7f7;
 
   @media screen and (max-width: 769px) {
@@ -39,9 +40,7 @@
   }
 
   &__titleContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex(column, center);
   }
 
   &__title {
@@ -145,9 +144,7 @@
   }
 
   &__qtyContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex(row, space-between);
     gap: 10px;
     box-sizing: border-box;
     padding-left: 12px;
