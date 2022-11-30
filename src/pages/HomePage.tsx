@@ -51,7 +51,7 @@ export function HomePage() {
   const isMounted = useRef(false);
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState<any>(false);
-  const [pageLimit, setPageLimit] = useState(6);
+  const [pageLimit, setPageLimit] = useState(8);
   const [pageCount, setPageCount] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -81,7 +81,7 @@ export function HomePage() {
   }, []);
 
   useEffect(() => {
-    setPageCount(Math.floor(draniks.length / pageLimit) + 1);
+    setPageCount(Math.ceil(draniks.length / pageLimit) + 1);
   }, [items]);
 
   const draniks = items?.map((item: MainItemProps) => {
