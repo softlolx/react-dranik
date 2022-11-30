@@ -8,7 +8,7 @@ export const fetchDraniks = createAsyncThunk('draniks/fetchDraniksFromApi', asyn
   const { data } = await axios.get(
     `${BASE_URL}/items?page=${currentPage}&limit=${pageLimit}&sortBy=${sortOption}&order=${
       sortOrder ? 'desc' : 'asc'
-    }${selectedCategory > 0 ? '&category=' + `${selectedCategory}` : ''}${
+    }${selectedCategory.value > 0 ? '&category=' + `${selectedCategory.value}` : ''}${
       searchBarValue.length > 0 ? '&search=' + `${searchBarValue}` : ''
     }`
   );
