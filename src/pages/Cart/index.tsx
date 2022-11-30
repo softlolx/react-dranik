@@ -17,6 +17,7 @@ export function Cart() {
     title: string;
     price: number;
     type: number;
+    typeText: string;
     size: string;
     count: number;
     unitPrice: number;
@@ -43,6 +44,7 @@ export function Cart() {
               price={item.price}
               imgUrl={item.imgUrl}
               type={item.type}
+              typeText={item.typeText}
               size={item.size}
               count={item.count}
               unitPrice={item.unitPrice}

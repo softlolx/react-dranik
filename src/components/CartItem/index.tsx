@@ -8,6 +8,7 @@ type CartItemProps = {
   price: number;
   imgUrl: string;
   type: number;
+  typeText: string;
   size: string;
   count: number;
   unitPrice: number;
@@ -19,6 +20,7 @@ export function CartItem({
   price,
   imgUrl,
   type,
+  typeText,
   size,
   count,
   unitPrice,
@@ -44,7 +46,7 @@ export function CartItem({
         <div className={styles.product__descriptionContainer}>
           <p className={styles.product__name}>{title}</p>
           <span className={styles.product__specs}>
-            {size}, {type}
+            {size}, {typeText}
           </span>
         </div>
       </div>

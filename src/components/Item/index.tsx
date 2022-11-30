@@ -32,6 +32,7 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
       imgUrl,
       type: selectedType,
       size: selectedSize,
+      typeText: itemTypes[+selectedType],
     };
 
     dispatch(addCartItem(item));
