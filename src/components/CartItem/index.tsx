@@ -26,15 +26,15 @@ export function CartItem({
   const dispatch = useDispatch();
 
   function handleDeleteItem() {
-    dispatch(removeCartItem({ id, unitPrice, count }));
+    dispatch(removeCartItem({ id, unitPrice, count, size, type }));
   }
 
   function handlePlusItem() {
-    dispatch(plusItem({ id, price }));
+    dispatch(plusItem({ id, price, size, type }));
   }
 
   function handleMinusItem() {
-    dispatch(minusItem({ id, price }));
+    dispatch(minusItem({ id, price, size, type }));
   }
 
   return (
