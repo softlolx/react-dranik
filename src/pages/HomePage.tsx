@@ -89,7 +89,7 @@ export function HomePage() {
       <Item
         key={item.id}
         id={item.id}
-        imgUrl={item.imageUrl}
+        imageUrl={item.imageUrl}
         title={item.title}
         price={item.price}
         types={item.types}

@@ -18,7 +18,7 @@ export const fetchDraniks = createAsyncThunk('draniks/fetchDraniksFromApi', asyn
 
 type ItemType = {
   id: string;
-  imgUrl: string;
+  imageUrl: string;
   title: string;
   price: number;
   types: number[];

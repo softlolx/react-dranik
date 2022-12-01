@@ -8,15 +8,11 @@ import { addCartItem } from '../../redux/slices/cartSlice';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { ItemPropsType } from '../../components/Item';
 
 export function DranikFull(): ReactElement {
-  const [item, setItem] = useState<{
-    imageUrl: string;
-    title: string;
-    price: string;
-    types: number[];
-    sizes: string[];
-  }>();
+  const [item, setItem] = useState<ItemPropsType>();
+
   const [selectedType, setSelectedType] = useState('0');
   const [selectedSize, setSelectedSize] = useState('M');
 
@@ -40,7 +36,7 @@ export function DranikFull(): ReactElement {
   const itemTypes = ['диетические', 'со\u00A0сметаной'];
 
   function handleAddButtonCLick() {
-    dispatch(addCartItem(item));
+    dispatch(addCartItem(item as ItemPropsType));
   }
 
   function handleTypeClick(evt: React.MouseEvent) {

@@ -13,7 +13,7 @@ export function Cart() {
 
   type CartItemProps = {
     id: string;
-    imgUrl: string;
+    imageUrl: string;
     title: string;
     price: number;
     type: number;
@@ -42,7 +42,7 @@ export function Cart() {
               id={item.id}
               title={item.title}
               price={item.price}
-              imgUrl={item.imgUrl}
+              imageUrl={item.imageUrl}
               type={item.type}
               typeText={item.typeText}
               size={item.size}

@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from './../store';
 
-type CartItemType = {
+export type CartItemType = {
   id: string;
   title: string;
   price: number;
-  imgUrl: string;
+  imageUrl: string;
   type: string;
   typeText: string;
   size: string;
@@ -39,7 +39,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addCartItem: (state, action) => {
+    addCartItem: (state, action: PayloadAction<CartItemType>) => {
       const findDouble = thisCartItem(state, action);
 
       if (findDouble) {
@@ -51,7 +51,7 @@ export const cartSlice = createSlice({
       state.totalQty += 1;
       state.totalPrice += action.payload.price;
     },
-    plusItem: (state, action) => {
+    plusItem: (state, action: PayloadAction<CartItemType>) => {
       const item: CartItemType | undefined = thisCartItem(state, action);
 
       item!.count += 1;
@@ -59,7 +59,7 @@ export const cartSlice = createSlice({
       state.totalQty += 1;
       state.totalPrice += action.payload.price;
     },
-    minusItem: (state, action) => {
+    minusItem: (state, action: PayloadAction<CartItemType>) => {
       const item: CartItemType | undefined = thisCartItem(state, action);
 
       item!.count -= 1;
@@ -71,7 +71,7 @@ export const cartSlice = createSlice({
         state.cartItems = state.cartItems.filter((cartItem) => cartItem !== item);
       }
     },
-    removeCartItem: (state, action) => {
+    removeCartItem: (state, action: PayloadAction<CartItemType>) => {
       const item = thisCartItem(state, action);
 
       state.cartItems = state.cartItems.filter((cartItem) => cartItem !== item);

@@ -6,7 +6,7 @@ type CartItemProps = {
   id: string;
   title: string;
   price: number;
-  imgUrl: string;
+  imageUrl: string;
   type: string;
   typeText: string;
   size: string;
@@ -18,7 +18,7 @@ export function CartItem({
   id,
   title,
   price,
-  imgUrl,
+  imageUrl,
   type,
   typeText,
   size,
@@ -28,21 +28,23 @@ export function CartItem({
   const dispatch = useDispatch();
 
   function handleDeleteItem() {
-    dispatch(removeCartItem({ id, unitPrice, count, size, type }));
+    dispatch(
+      removeCartItem({ id, title, price, imageUrl, type, typeText, size, count, unitPrice })
+    );
   }
 
   function handlePlusItem() {
-    dispatch(plusItem({ id, price, size, type }));
+    dispatch(plusItem({ id, title, price, imageUrl, type, typeText, size, count, unitPrice }));
   }
 
   function handleMinusItem() {
-    dispatch(minusItem({ id, price, size, type }));
+    dispatch(minusItem({ id, title, price, imageUrl, type, typeText, size, count, unitPrice }));
   }
 
   return (
     <div className={styles.cartItem}>
       <div className={styles.product}>
-        <img src={imgUrl} alt="#" className={styles.product__image} />
+        <img src={imageUrl} alt="#" className={styles.product__image} />
         <div className={styles.product__descriptionContainer}>
           <p className={styles.product__name}>{title}</p>
           <span className={styles.product__specs}>

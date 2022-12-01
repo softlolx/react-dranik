@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 import { addCartItem } from '../../redux/slices/cartSlice';
 
-type ItemProps = {
+export type ItemPropsType = {
   id: string;
-  imgUrl: string;
+  imageUrl: string;
   title: string;
   price: number;
   types: number[];
@@ -16,7 +16,16 @@ type ItemProps = {
   rating: number;
 };
 
-export function Item({ id, imgUrl, title, price, types, sizes, category, rating }: ItemProps) {
+export function Item({
+  id,
+  imageUrl,
+  title,
+  price,
+  types,
+  sizes,
+  category,
+  rating,
+}: ItemPropsType) {
   const dispatch = useDispatch();
 
   const [selectedType, setSelectedType] = useState('0');
@@ -29,10 +38,12 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
       id,
       title,
       price,
-      imgUrl,
+      imageUrl,
       type: selectedType,
       size: selectedSize,
       typeText: itemTypes[+selectedType],
+      count: 0,
+      unitPrice: price,
     };
 
     dispatch(addCartItem(item));
@@ -49,7 +60,7 @@ export function Item({ id, imgUrl, title, price, types, sizes, category, rating 
   return (
     <div className={styles.item}>
       <Link to={`/dranik/${id}`} className={styles.item__imageLink}>
-        <img src={imgUrl} alt="#" className={styles.item__image} />
+        <img src={imageUrl} alt="#" className={styles.item__image} />
       </Link>
       <h3 className={styles.item__name}>{title}</h3>
       <div className={styles.item__configContainer}>
