@@ -132,22 +132,22 @@ export function HomePage() {
     setIsSortPopupOpened((prev: Boolean) => !prev);
   }
 
-  function handleSortOrderChange() {
+  const handleSortOrderChange = useCallback(() => {
     dispatch(setSortOrder());
-  }
+  }, []);
 
-  function handleSortPopupClick() {
+  const handleSortPopupClick = useCallback(() => {
     setIsSortPopupOpened((prev: Boolean) => !prev);
-  }
+  }, []);
 
-  function handleCategorySelect(id: string) {
+  const handleCategorySelect = useCallback((id: string) => {
     dispatch(setSelectedCategory(+id));
     setCurrentPage(1);
-  }
+  }, []);
 
-  function handleSearchBarChange(e: InputEvent) {
+  const handleSearchBarChange = useCallback((e: InputEvent) => {
     dispatch(setSearchBarValue((e.target as HTMLInputElement)?.value));
-  }
+  }, []);
 
   const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page);

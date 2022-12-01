@@ -4,6 +4,8 @@ import styles from './Categories.module.scss';
 import { SearchBar } from '../SearchBar';
 import { useSelector } from 'react-redux';
 
+import { useWhyDidYouUpdate } from 'ahooks';
+
 type CategorieProps = {
   children: any;
   onSortPopupClick: () => void;
@@ -21,6 +23,14 @@ export function Categories({
   onSearchBarChange,
 }: CategorieProps) {
   const categories = ['Все', 'Мясные', 'Веганские', 'Грибные', 'Рыбные', 'Острые'];
+
+  useWhyDidYouUpdate('Categories', {
+    children,
+    onSortPopupClick,
+    onCategorySelect,
+    onChangeSortOrder,
+    onSearchBarChange,
+  });
 
   function handleCategoryClick(evt: React.MouseEvent) {
     onCategorySelect((evt.target as Element)?.id);
