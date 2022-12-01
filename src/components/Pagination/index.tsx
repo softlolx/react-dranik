@@ -1,6 +1,8 @@
 import ReactPaginate from 'react-paginate';
 import styles from './Pagination.module.scss';
 
+import { useWhyDidYouUpdate } from 'ahooks';
+
 type PaginationProps = {
   onPageChange: Function;
   pageLimit: number;
@@ -8,6 +10,7 @@ type PaginationProps = {
 };
 
 export function Pagination({ onPageChange, pageLimit, pageCount }: PaginationProps) {
+  useWhyDidYouUpdate('Pagination', { onPageChange, pageLimit, pageCount });
   return (
     <>
       <ReactPaginate

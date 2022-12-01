@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "ahooks": "^3.7.2",
     "typescript-plugin-css-modules": "^3.4.0"
   }
 }
