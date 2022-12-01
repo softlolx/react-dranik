@@ -1,6 +1,6 @@
 import styles from './Main.module.scss';
 
-type MainProps = { children?: JSX.Element };
+type MainProps = { children?: any };
 
 export function Main({ children }: MainProps) {
   return (

@@ -4,27 +4,26 @@ import { useState } from 'react';
 import styles from './DranikFull.module.scss';
 import { useDispatch } from 'react-redux';
 
-import { addCartItem } from '../../redux/slices/cartSlice';
+import { addCartItem, CartItemType } from '../../redux/slices/cartSlice';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { ItemPropsType } from '../../components/Item';
 
 export function DranikFull(): ReactElement {
-  const [item, setItem] = useState<ItemPropsType>();
+  const [fetchedItem, setFetchedItem] = useState<ItemPropsType>();
 
   const [selectedType, setSelectedType] = useState('0');
   const [selectedSize, setSelectedSize] = useState('M');
 
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { id } = useParams<string>();
 
   useEffect(() => {
     async function getDranik() {
       try {
         const { data } = await axios.get('https://6323b8a1bb2321cba91e1779.mockapi.io/items/' + id);
-        setItem(data);
-        console.log(item);
+        setFetchedItem(data);
       } catch (error) {
         console.log(error);
       }
@@ -36,7 +35,16 @@ export function DranikFull(): ReactElement {
   const itemTypes = ['диетические', 'со\u00A0сметаной'];
 
   function handleAddButtonCLick() {
-    dispatch(addCartItem(item as ItemPropsType));
+    const item = {
+      ...fetchedItem,
+      type: selectedType,
+      size: selectedSize,
+      typeText: itemTypes[+selectedType],
+      count: 0,
+      unitPrice: fetchedItem!.price,
+    };
+
+    dispatch(addCartItem(item as CartItemType));
   }
 
   function handleTypeClick(evt: React.MouseEvent) {
@@ -47,14 +55,14 @@ export function DranikFull(): ReactElement {
     setSelectedSize((evt.target as Element).id);
   }
 
-  if (item) {
+  if (fetchedItem) {
     return (
       <div className={styles.item}>
-        <img src={item.imageUrl} alt="#" className={styles.item__image} />
-        <h3 className={styles.item__name}>{item.title}</h3>
+        <img src={fetchedItem.imageUrl} alt="#" className={styles.item__image} />
+        <h3 className={styles.item__name}>{fetchedItem.title}</h3>
         <div className={styles.item__configContainer}>
           <div className={styles.item__specificButtons}>
-            {item.types.map((item, index) => {
+            {fetchedItem.types.map((item, index) => {
               return (
                 <button
                   key={index}
@@ -70,7 +78,7 @@ export function DranikFull(): ReactElement {
             })}
           </div>
           <div className={styles.item__sizes}>
-            {item.sizes.map((item, index) => {
+            {fetchedItem.sizes.map((item, index) => {
               return (
                 <button
                   key={index}
@@ -87,7 +95,7 @@ export function DranikFull(): ReactElement {
           </div>
         </div>
         <div className={styles.item__bottomContainer}>
-          <span className={styles.item__price}>от&#160;{item.price}&#8381;</span>
+          <span className={styles.item__price}>от&#160;{fetchedItem.price}&#8381;</span>
           <button className={`${styles.item__addButton} `} onClick={handleAddButtonCLick}>
             <div className={styles.item__addButtonIcon}></div>
             <span className={`${styles.item__addButtonText} `}>Добавить</span>

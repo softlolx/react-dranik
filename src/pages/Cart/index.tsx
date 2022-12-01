@@ -2,7 +2,7 @@ import styles from './Cart.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { CartItem } from '../../components/CartItem';
-import { clearCart, selectCart } from '../../redux/slices/cartSlice';
+import { CartItemType, clearCart, selectCart } from '../../redux/slices/cartSlice';
 
 export function Cart() {
   const dispatch = useDispatch();
@@ -10,18 +10,6 @@ export function Cart() {
   function handleCartClear() {
     dispatch(clearCart());
   }
-
-  type CartItemProps = {
-    id: string;
-    imageUrl: string;
-    title: string;
-    price: number;
-    type: number;
-    typeText: string;
-    size: string;
-    count: number;
-    unitPrice: number;
-  };
 
   return (
     <section className={styles.cart}>
@@ -35,7 +23,7 @@ export function Cart() {
         </button>
       </div>
       <div className={styles.cartItemsContainer}>
-        {cartItems?.map((item: CartItemProps, index: number) => {
+        {cartItems?.map((item: CartItemType, index: number) => {
           return (
             <CartItem
               key={item.id + index}

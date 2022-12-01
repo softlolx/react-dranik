@@ -118,7 +118,7 @@ export function HomePage() {
     } catch (error: any) {
       console.log(error.code);
     } finally {
-      if (sortOption === 'rating' && selectedCategory.value === '0') {
+      if (sortOption === 'rating' && selectedCategory.value.toString() === '0') {
         navigate(``);
       }
     }
