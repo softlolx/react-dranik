@@ -16,7 +16,23 @@ export const fetchDraniks = createAsyncThunk('draniks/fetchDraniksFromApi', asyn
   return data;
 });
 
-const initialState = {
+type ItemType = {
+  id: string;
+  imgUrl: string;
+  title: string;
+  price: number;
+  types: number[];
+  sizes: string[];
+  category: number;
+  rating: number;
+};
+
+interface DraniksSliceStateInterface {
+  items: ItemType[];
+  isLoading: boolean;
+}
+
+const initialState: DraniksSliceStateInterface = {
   items: [],
   isLoading: true,
 };
