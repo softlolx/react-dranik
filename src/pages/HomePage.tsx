@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
@@ -44,7 +45,7 @@ export function HomePage() {
   const { searchBarValue } = useSelector(selectSearch);
   const { items, isLoading } = useSelector(selectDraniks);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const isSearching = useRef(false);
@@ -75,7 +76,9 @@ export function HomePage() {
     if (window.location.search) {
       const urlParams = qs.parse(window.location.search.substring(1));
       dispatch(setCategoryFromUrl(urlParams));
-      dispatch(setSortOptions(urlParams));
+
+      // this package can`t be typed properly
+      dispatch(setSortOptions(urlParams as any));
       isSearching.current = true;
     }
   }, []);
@@ -105,7 +108,6 @@ export function HomePage() {
 
     try {
       await dispatch(
-        // @ts-ignore
         fetchDraniks({
           currentPage,
           pageLimit,
@@ -139,7 +141,7 @@ export function HomePage() {
   }
 
   function handleCategorySelect(id: string) {
-    dispatch(setSelectedCategory(id));
+    dispatch(setSelectedCategory(+id));
     setCurrentPage(1);
   }
 

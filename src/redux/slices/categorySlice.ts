@@ -1,5 +1,5 @@
 import { RootState } from './../store';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface categorySliceStateInterface {
   value: number;
@@ -13,11 +13,11 @@ export const categorySlice = createSlice({
   name: 'category',
   initialState,
   reducers: {
-    setSelectedCategory: (state, category) => {
-      state.value = category.payload;
+    setSelectedCategory: (state, action: PayloadAction<number>) => {
+      state.value = action.payload;
     },
-    setCategoryFromUrl: (state, option) => {
-      state.value = +option.payload.selectedCategory;
+    setCategoryFromUrl: (state, action) => {
+      state.value = +action.payload.selectedCategory;
     },
   },
 });
