@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
@@ -53,7 +53,7 @@ export function HomePage() {
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState<any>(false);
   const [pageLimit, setPageLimit] = useState(8);
-  const [pageCount, setPageCount] = useState(3);
+  const [pageCount, setPageCount] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -83,9 +83,9 @@ export function HomePage() {
     }
   }, []);
 
-  useEffect(() => {
-    setPageCount(Math.ceil(draniks.length / pageLimit) + 1);
-  }, [items]);
+  // useEffect(() => {
+  //   setPageCount(Math.ceil(draniks.length / pageLimit) + 1);
+  // }, [items]);
 
   const draniks = items?.map((item: MainItemProps) => {
     return (
@@ -149,9 +149,9 @@ export function HomePage() {
     dispatch(setSearchBarValue((e.target as HTMLInputElement)?.value));
   }
 
-  function handlePageChange(page: number) {
+  const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page);
-  }
+  }, []);
 
   return (
     <>
