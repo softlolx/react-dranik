@@ -7,7 +7,7 @@ type CartItemProps = {
   title: string;
   price: number;
   imgUrl: string;
-  type: number;
+  type: string;
   typeText: string;
   size: string;
   count: number;

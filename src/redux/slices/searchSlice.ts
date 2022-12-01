@@ -1,6 +1,11 @@
+import { RootState } from './../store';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface searchSliceStateInterface {
+  searchBarValue: string;
+}
+
+const initialState: searchSliceStateInterface = {
   searchBarValue: '',
 };
 
@@ -14,7 +19,7 @@ export const searchSlice = createSlice({
   },
 });
 
-export const selectSearch = (state) => state.search;
+export const selectSearch = (store: RootState) => store.search;
 
 export const { setSearchBarValue } = searchSlice.actions;
 

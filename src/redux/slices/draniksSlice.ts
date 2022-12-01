@@ -1,3 +1,4 @@
+import { RootState } from './../store';
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const BASE_URL = 'https://6323b8a1bb2321cba91e1779.mockapi.io';
@@ -47,7 +48,7 @@ export const draniksSlice = createSlice({
   },
 });
 
-export const selectDraniks = (state) => state.draniks;
+export const selectDraniks = (store: RootState) => store.draniks;
 
 export const { setItems, setIsLoading } = draniksSlice.actions;
 

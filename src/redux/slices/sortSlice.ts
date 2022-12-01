@@ -1,6 +1,13 @@
+import { RootState } from './../store';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface sortSliceStateInterface {
+  sortOption: string;
+  sortOptionText: string;
+  sortOrder: boolean;
+}
+
+const initialState: sortSliceStateInterface = {
   sortOption: 'rating',
   sortOptionText: 'популярности',
   sortOrder: true,
@@ -26,9 +33,8 @@ export const sortSlice = createSlice({
   },
 });
 
-export const selectSorting = (state) => state.sort;
+export const selectSorting = (store: RootState) => store.sort;
 
-// Action creators are generated for each case reducer function
 export const { setSortOption, setSortOptionText, setSortOrder, setSortOptions } = sortSlice.actions;
 
 export default sortSlice.reducer;

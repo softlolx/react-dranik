@@ -1,6 +1,11 @@
+import { RootState } from './../store';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface categorySliceStateInterface {
+  value: number;
+}
+
+const initialState: categorySliceStateInterface = {
   value: 0,
 };
 
@@ -17,7 +22,7 @@ export const categorySlice = createSlice({
   },
 });
 
-export const selectCategory = (state) => state.category;
+export const selectCategory = (store: RootState) => store.category;
 
 export const { setSelectedCategory, setCategoryFromUrl } = categorySlice.actions;
 
