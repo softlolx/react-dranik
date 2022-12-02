@@ -2,9 +2,12 @@ import styles from './Cart.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { CartItem } from '../../components/CartItem';
+import { Payment } from '../../components/Payment/Payment';
 import { CartItemType, clearCart, selectCart } from '../../redux/slices/cartSlice';
+import { useState } from 'react';
 
 export function Cart() {
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const dispatch = useDispatch();
   const { cartItems, totalQty, totalPrice } = useSelector(selectCart);
   function handleCartClear() {
@@ -52,6 +55,7 @@ export function Cart() {
           <button className={styles.cart__checkoutButton}>Оплатить заказ</button>
         </div>
       </div>
+      <Payment totalPrice={100} isOpen={isPaymentOpen} />
     </section>
   );
 }

@@ -1,0 +1,40 @@
+@import '../../variables.scss';
+
+.payment {
+  position: absolute;
+  top: 200px;
+  min-height: 300px;
+  width: 300px;
+  @include flex;
+  align-items: flex-start;
+
+  @media screen and (min-width: 650px) {
+    & {
+      top: 200px;
+      width: 728px;
+    }
+  }
+
+  &__closeButton {
+    border: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background-color: transparent;
+    background-image: url(../../images/close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    &:hover {
+      cursor: pointer;
+      scale: 1.06;
+      transition: scale 0.15s ease-in-out;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
