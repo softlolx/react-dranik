@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import styles from './NotFound.module.scss';
 import { Link } from 'react-router-dom';
 export function NotFound() {

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styles from './Main.module.scss';
 
 type MainProps = { children?: any };
