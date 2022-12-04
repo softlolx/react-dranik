@@ -7,7 +7,7 @@ type PaymentPropsType = {
   closePopup: () => void;
 };
 
-export const Payment: JSX.Element = ({ totalPrice, isOpen, closePopup }: PaymentPropsType) => {
+export const Payment = ({ totalPrice, isOpen, closePopup }: PaymentPropsType) => {
   if (isOpen) {
     return (
       <div className={styles.payment}>
@@ -34,4 +34,5 @@ export const Payment: JSX.Element = ({ totalPrice, isOpen, closePopup }: Payment
       </div>
     );
   }
+  return null;
 };
