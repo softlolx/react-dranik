@@ -10,6 +10,11 @@ export function Cart() {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const dispatch = useDispatch();
   const { cartItems, totalQty, totalPrice } = useSelector(selectCart);
+
+  function togglePaymentPopup() {
+    setIsPaymentOpen((state) => !state);
+  }
+
   function handleCartClear() {
     dispatch(clearCart());
   }
@@ -52,10 +57,16 @@ export function Cart() {
           <Link to={'/'}>
             <button className={styles.cart__backButton}>Назад к меню</button>
           </Link>
-          <button className={styles.cart__checkoutButton}>Оплатить заказ</button>
+          <button
+            disabled={!(cartItems.length > 0)}
+            className={styles.cart__checkoutButton}
+            onClick={togglePaymentPopup}
+          >
+            Оплатить заказ
+          </button>
         </div>
       </div>
-      <Payment totalPrice={100} isOpen={isPaymentOpen} />
+      <Payment totalPrice={100} isOpen={isPaymentOpen} closePopup={togglePaymentPopup} />
     </section>
   );
 }
