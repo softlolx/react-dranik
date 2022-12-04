@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-dranik/static/css/main.bfe38322.css",
-    "main.js": "/react-dranik/static/js/main.153f18a7.js",
+    "main.css": "/react-dranik/static/css/main.a294f579.css",
+    "main.js": "/react-dranik/static/js/main.c87932db.js",
     "static/media/logo.svg": "/react-dranik/static/media/logo.0cb37a055703367e51b700f4513af38a.svg",
     "static/media/cartIconBlack.svg": "/react-dranik/static/media/cartIconBlack.dcd5168086a25b3307ba.svg",
     "static/media/cartIcon.svg": "/react-dranik/static/media/cartIcon.74043b2aa42ed4855a9e.svg",
-    "static/media/close.svg": "/react-dranik/static/media/close.7696257a3cd8715ab8e7.svg",
+    "static/media/close.svg": "/react-dranik/static/media/close.099ee72cf23ff0726290.svg",
     "index.html": "/react-dranik/index.html",
     "static/media/sortArrow.svg": "/react-dranik/static/media/sortArrow.8a732a7211d0fa00bfd6.svg",
     "static/media/addPlus.svg": "/react-dranik/static/media/addPlus.dcca509e467c41efa81e.svg",
     "static/media/minus.svg": "/react-dranik/static/media/minus.fe679d6907ef6db33dcc.svg",
-    "main.bfe38322.css.map": "/react-dranik/static/css/main.bfe38322.css.map",
-    "main.153f18a7.js.map": "/react-dranik/static/js/main.153f18a7.js.map"
+    "main.a294f579.css.map": "/react-dranik/static/css/main.a294f579.css.map",
+    "main.c87932db.js.map": "/react-dranik/static/js/main.c87932db.js.map"
   },
   "entrypoints": [
-    "static/css/main.bfe38322.css",
-    "static/js/main.153f18a7.js"
+    "static/css/main.a294f579.css",
+    "static/js/main.c87932db.js"
   ]
 }
