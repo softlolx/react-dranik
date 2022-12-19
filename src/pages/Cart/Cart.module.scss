@@ -212,6 +212,14 @@
     &:active {
       transform: scale(0.9);
     }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    &:disabled:active {
+      transform: none;
+    }
   }
 }
 
