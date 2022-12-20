@@ -48,7 +48,7 @@
     max-height: 48px;
     box-sizing: border-box;
     padding: 14px;
-    background: #f9f9f9;
+    background: $liteBackgroundColor;
     border-radius: 30px;
 
     font-weight: 600;
@@ -59,7 +59,7 @@
 
     &_active {
       background-color: $blackLite;
-      color: #f9f9f9;
+      color: $liteBackgroundColor;
     }
 
     &:hover {
@@ -144,14 +144,14 @@
   &__optionButton {
     padding: 0;
     border: none;
-    border-bottom: 1px dashed #fe5f1e;
+    border-bottom: 1px dashed $actionColor;
     background-color: transparent;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 0.015em;
 
-    color: #fe5f1e;
+    color: $actionColor;
 
     &:hover {
       cursor: pointer;

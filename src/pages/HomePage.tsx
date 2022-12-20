@@ -52,7 +52,7 @@ export function HomePage() {
   const isMounted = useRef(false);
 
   const [isSortPopupOpened, setIsSortPopupOpened] = useState<any>(false);
-  const [pageLimit, setPageLimit] = useState(8);
+  const [pageLimit, setPageLimit] = useState(10);
   const [pageCount, setPageCount] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
 

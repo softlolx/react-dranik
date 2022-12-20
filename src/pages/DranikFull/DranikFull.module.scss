@@ -173,14 +173,14 @@
     @include flex();
     max-width: 120px;
     gap: 4px;
-    border: 1px solid $orangeMain;
+    border: 1px solid $actionColor;
     border-radius: 24px;
     background-color: transparent;
     box-sizing: border-box;
     padding: 8px 8px;
 
     &_active {
-      background-color: $orangeMain;
+      background-color: $actionColor;
     }
 
     &:hover {
@@ -224,7 +224,7 @@
     font-size: 14px;
     line-height: 16px;
 
-    color: $orangeMain;
+    color: $actionColor;
 
     &_active {
       color: #fff;

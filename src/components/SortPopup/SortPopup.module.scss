@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .sort__optionContainer {
   position: absolute;
   right: 0;
@@ -35,7 +37,7 @@
   color: #000000;
 
   &_active {
-    background-color: #fe5f1e;
+    background-color: $actionColor;
     color: aliceblue;
   }
 
